@@ -26,4 +26,20 @@ public class RoleDao {
 			List<Rolebean> roles=stmt.query("select * from role",new BeanPropertyRowMapper<Rolebean>(Rolebean.class));
 			return roles;
 		}
+		public void deleterole(int roleId)
+		{
+			stmt.update("delete from role where roleid=?",roleId); //It will place the roleid
+		}
+		public Rolebean getRoleById(int roleId)
+		{
+			Rolebean role = stmt.queryForObject("select *  from role where roleid = ? ",
+					new BeanPropertyRowMapper<Rolebean>(Rolebean.class), new Object[] { roleId });    //When we have condition statement in query that time we used Queryfor objectmethod
+			return role;
+		}
+		
+		public void updateRole(Rolebean role)
+		{
+			stmt.update("update role set rolename=? where roleid=?",role.getRoleName(),role.getRoleId());
+		}
+		
 }

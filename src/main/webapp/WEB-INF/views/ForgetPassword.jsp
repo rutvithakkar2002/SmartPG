@@ -9,9 +9,9 @@
 <body>
 <h1>ForgetPassword form </h1>
 
-<form method="POST" action="saveuser2">
+<form method="POST" action="forgetpassword">
 Email:<input type="text" name="email"><br><br>
-<input type="submit" value="ForgetPassword">
+<input type="submit" value="GET ME BACK">
 </form>
 
 </body>

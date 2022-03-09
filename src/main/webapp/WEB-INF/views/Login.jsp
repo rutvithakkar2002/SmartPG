@@ -9,11 +9,18 @@
 <body>
 <h1>Login form</h1>
 
-<form method="POST" action="saveuser1">
+<form action="login" method="POST" >
 Email:<input type="text" name="email"><br><br>
 Password:<input type="password" name="password"><br><br>
-
 <input type="submit" value="Login">
 </form>
+${error}${msg}
+
+
+<a href="signup">New User?</a> | 
+<a href="forgetpassword">ForgetPassword</a>
+
+
+
 </body>
 </html>
