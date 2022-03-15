@@ -13,17 +13,6 @@
 <form action="updatepgrate" method="post" >
 		<input type="hidden" value="${rate.pgrateid}" name="pgrateid"/>   <!-- we have to upadate only rolename through roleid so, we have kept roleid type as hidden -->
 		
-		Pgid:<select name="pgid">
-	<option>--------Select PG----------</option>
-	<c:forEach items="${pg}" var="p">
-	<option value="${p.pgid}">${p.pgaddress}:${p.pglongitude}:${p.city} </option> 
-
-	</c:forEach>
-	</select>
-
-
-<br><br>
-		
 		Onesharing : <input type="text" name="onesharing" value="${rate.onesharing }"/><br><Br>
 		Twosharing : <input type="text" name="twosharing" value="${rate.twosharing }"/><br><Br>
 		Threesharing : <input type="text" name="threesharing" value="${rate.threesharing }"/><br><Br>

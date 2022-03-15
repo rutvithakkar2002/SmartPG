@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+    pageEncoding="ISO-8859-1"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Transactions</title>
+<title>List Users</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
-
-
 </head>
 <body>
 
-	<div class="container-scroller">
+
+<div class="container-scroller">
 
 		<div class="row p-0 m-0 proBanner d-flex" id="proBanner">
 
@@ -74,9 +72,8 @@
 								<img src="assets/images/faces/face1.jpg" alt="image"> <span
 									class="availability-status online"></span>
 							</div>
-
 							<div class="nav-profile-text">
-								<p class="mb-1 text-black"></p>
+								<p class="mb-1 text-black">David Greymaax</p>
 							</div>
 					</a>
 						<div class="dropdown-menu navbar-dropdown"
@@ -233,40 +230,77 @@
 							</ul>
 						</nav>
 					</div>
+					
+					
+					
+					<div class="row">
+						<div class="col-md-7 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">User Table</h4>
+									<br>
+									<a href="newuser">Add New User</a>
+									<br><br>
+									<div class="table-responsive">
+										
+										<table id="getallusers" class="table table-striped">
+											<thead>
+												<tr user="row">
+															
+													<td>UserId</td>
+													<td>FirstName</td>
+													<td>LastName</td>
+													<td>Email</td>
+													<td>Password</td>
+													<td>RoleName</td>
+													<td>Image url</td>
+													<td>Action</td>
+													
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach items="${users}" var="u">
+												<tr>
+													<td>${u.userId}</td>
+													<td>${u.firstName}</td>
+													<td>${u.lastName}</td>
+													<td>${u.email}</td>
+													<td>${u.password}</td>
+													<td>${u.roleName}</td>
+													<td>${u.imgurl}</td>
 
+													<td><a href="deleteuser/${u.userId}">Delete</a>|
+														<a href="edituser?userId=${u.userId}">Edit</a>
+			
+													</td>
+											</tr>
 
-					<form method="POST" action="savetransaction">
-						UserName:<select name="userId">
-							<option>--------Select User----------</option>
-							<c:forEach items="${user}" var="u">
-								<option value="${u.userId}">${u.firstName}:${u.lastName}:${u.email}
-								</option>
-
-							</c:forEach>
-						</select> <br>
-						<br> Rate:<input type="text" name="rate"><br>
-						<br> Pgid:<select name="pgid">
-							<option>--------Select PG----------</option>
-							<c:forEach items="${pg}" var="p">
-								<option value="${p.pgid}">${p.pgaddress}:${p.pglongitude}:${p.city}
-								</option>
-
-							</c:forEach>
-						</select> <br>
-						<br> <input type="submit" value="submit">
-					</form>
-
-
-
-
-
-
-
-
+										</c:forEach>
+														
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5 grid-margin stretch-card"></div>
+					</div>
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->
-
+				<footer class="footer">
+					<div class="container-fluid d-flex justify-content-between">
+						<span
+							class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright
+							© bootstrapdash.com 2021</span> <span
+							class="float-none float-sm-end mt-1 mt-sm-0 text-end">
+							Free <a
+							href="https://www.bootstrapdash.com/bootstrap-admin-template/"
+							target="_blank">Bootstrap admin template</a> from
+							Bootstrapdash.com
+						</span>
+					</div>
+				</footer>
 				<!-- partial -->
 			</div>
 			<!-- main-panel ends -->
@@ -276,11 +310,19 @@
 	<!-- container-scroller -->
 	<jsp:include page="AllJs.jsp"></jsp:include>
 	<!-- End custom js for this page -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#getallusers').DataTable();
+		});
+	</script>
+
+
+
+
 
 
 
 </body>
-
 </html>
 
 
@@ -288,31 +330,42 @@
 <!-- 
 
 
-<h1>Transaction</h1>
-<form method="POST" action="savetransaction">
-UserName:<select name="userId">
-<option>--------Select User----------</option>
-<c:forEach items="${user}" var="u">
-<option value="${u.userId}">${u.firstName}:${u.lastName}:${u.email} </option> 
+<h2>List All users</h2>
+<table border=1>
+<tr>
+	<td>UserId</td>
+	<td>FirstName</td>
+	<td>LastName</td>
+	<td>Email</td>
+	<td>Password</td>
+	<td>RoleName</td>
+	<td>Image url</td>
+	<td>Action</td>
+</tr>
+
+<c:forEach items="${users}" var="u">
+<tr>
+<td>${u.userId}</td>
+<td>${u.firstName}</td>
+<td>${u.lastName}</td>
+<td>${u.email}</td>
+<td>${u.password}</td>
+<td>${u.roleName}</td>
+<td>${u.imgurl}</td>
+
+<td><a href="deleteuser/${u.userId}">Delete</a>|
+			<a href="edituser?userId=${u.userId}">Edit</a>
+			
+			</td>
+
+
+
+
+</tr>
 
 </c:forEach>
-</select>
-<br><br>
 
-Rate:<input type="text" name="rate"><br><br>
-
-Pgid:<select name="pgid">
-<option>--------Select PG----------</option>
-<c:forEach items="${pg}" var="p">
-<option value="${p.pgid}">${p.pgaddress}:${p.pglongitude}:${p.city} </option> 
-
-</c:forEach>
-</select>
-<br><br>
-
-
-<input type="submit" value="submit">
-</form>
+</table>
 
 
 

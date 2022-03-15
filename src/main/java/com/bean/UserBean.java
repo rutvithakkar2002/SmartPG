@@ -9,6 +9,9 @@ public class UserBean {
 	private String roleName;
 	private String imgurl;
 	private int otp;
+	private String createdat;
+	private String gender;
+	
 	
 	public String getFirstName() {
 		return firstName;
@@ -64,4 +67,19 @@ public class UserBean {
 	public void setImgurl(String imgurl) {
 		this.imgurl = imgurl;
 	}
+	public String getCreatedat() {
+		return createdat;
+	}
+	public void setCreatedat(String createdat) {
+		this.createdat = createdat;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
+	
+	
 }

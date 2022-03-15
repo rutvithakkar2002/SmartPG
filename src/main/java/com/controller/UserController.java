@@ -1,5 +1,9 @@
 package com.controller;
 
+
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +27,13 @@ public class UserController {
 	RoleDao roleDao;
 	@Autowired
 	UserDao userDao;
-
+	
+	public static String getDate()
+	{
+		Date date=new Date();
+		SimpleDateFormat s=new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
+		return s.format(date);
+	}
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
 	
@@ -40,8 +50,12 @@ public class UserController {
 		String encPassword = bcryptPasswordEncoder.encode(plainPassword);//10 
 		System.out.println(encPassword);
 		user.setPassword(encPassword);
+		String date = getDate();
+		user.setCreatedat(date);
 		userDao.adduser(user);  //userbean -->data store
-		return "redirect:/getallusers";
+		
+		
+		return "redirect:/login";
 	}
 	
 	@GetMapping("/getallusers")

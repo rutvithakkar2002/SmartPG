@@ -3,7 +3,7 @@ package com.bean;
 public class PgBean {
 	private int pgid;
 	private int userId;
-
+	private String pgname;
 	private String pgaddress;
 	private String pglongitude;
 	private String pglattitude;
@@ -22,6 +22,15 @@ public class PgBean {
 	}
 	public void setPgid(int pgid) {
 		this.pgid = pgid;
+	}
+	
+	
+	
+	public String getPgname() {
+		return pgname;
+	}
+	public void setPgname(String pgname) {
+		this.pgname = pgname;
 	}
 	public int getUserId() {
 		return userId;

@@ -66,6 +66,7 @@ public class PgDetail {
 		
 		List<SubscriptionBean> subscription=subscriptiondao.getAllplans();
 		model.addAttribute("subscription",subscription);
+		
 		return "EditPg";
 	}
 	@PostMapping("/updatepg")   //for database updation

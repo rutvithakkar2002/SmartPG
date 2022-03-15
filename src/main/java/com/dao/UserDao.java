@@ -16,7 +16,7 @@ public class UserDao {
 	JdbcTemplate stmt;
 	public void adduser(UserBean user)
 	{
-		stmt.update("insert into users (firstname,lastname,email,password,roleid,imgurl) values (?,?,?,?,?,?)",user.getFirstName(),user.getLastName(),user.getEmail(),user.getPassword(),user.getRoleId(),user.getImgurl());
+		stmt.update("insert into users (firstname,lastname,email,password,gender,roleid,imgurl,createdat) values (?,?,?,?,?,?,?,?)",user.getFirstName(),user.getLastName(),user.getEmail(),user.getPassword(),user.getGender(),user.getRoleId(),user.getImgurl(),user.getCreatedat());
 	}
 	public List<UserBean> getAllUsers()
 	{
@@ -25,7 +25,6 @@ public class UserDao {
 	}
 	public UserBean getUserByEmail(String email) {
 		UserBean dbUser = null;
-
 		try {
 			dbUser = stmt.queryForObject("select * from users where email = ? ",
 					new BeanPropertyRowMapper<UserBean>(UserBean.class), new Object[] { email });

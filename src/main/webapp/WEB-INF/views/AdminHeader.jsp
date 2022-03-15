@@ -4,7 +4,7 @@
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
-          </button>
+          </button>	
           <div class="search-field d-none d-md-block">
             <form class="d-flex align-items-center h-100" action="#">
               <div class="input-group">
@@ -20,19 +20,35 @@
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
                   <img src="assets/images/faces/face1.jpg" alt="image">
-                  <span class="availability-status online"></span>
+                  
+                  
+                <!--    <span>${user.firstName }</span>-->
+                
+                
+             <!--     <div class="nav-profile-text d-flex flex-column">
+                  <span class="font-weight-bold mb-2">${user.firstName}</span>
+                  <span class="text-secondary text-small">Admin</span>
+                </div>
+                 -->
+                
+                
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">David Greymaax</p>
+                  <p class="mb-1 text-black	"></p>
+            <span>${user.firstName}</span>
+			</div>
                 </div>
-              </a>
+                    
+             
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+                  <i class="mdi mdi-cached me-2 text-success"></i> Activity Log
+                  
+                  </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="logout">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
-              </div>
+              </div>      
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link">

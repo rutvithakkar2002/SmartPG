@@ -42,6 +42,8 @@ public class PgRateController {
 	{
 		List<PgRateBean> pgrate =  pgratedao.getallpgrate();
 		model.addAttribute("pgrate",pgrate);
+		
+		
 		return "ListPgRate";
 	}
 	@GetMapping("/deletepgrate/{pgrateid}")

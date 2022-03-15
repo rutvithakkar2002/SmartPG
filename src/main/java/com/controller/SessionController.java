@@ -35,7 +35,7 @@ public class SessionController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String login2() {
-		return "redirect:/login";
+		return "Login";
 	}
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
@@ -52,6 +52,10 @@ public class SessionController {
 
 			if (bcryptPasswordEncoder.matches(user.getPassword(), dbUser.getPassword()) == true) {
 				isCorrect = true; //login successfully
+				
+				session.setAttribute("user", dbUser);
+				
+				System.out.println(user.getFirstName());
 			}
 		}
 
@@ -138,7 +142,7 @@ public class SessionController {
 		}
 	}
 	@GetMapping("/logout")
-	public String logout(HttpSession session) {
+	public String Logout(HttpSession session) {
 		session.invalidate(); 
 		return "redirect:/login";
 		
@@ -152,5 +156,8 @@ public class SessionController {
 		System.out.println(user.getPassword());
 		return "Login";
 	}
+	
+	
+	
 	
 }	

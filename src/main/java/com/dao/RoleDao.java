@@ -12,13 +12,13 @@ import com.bean.Rolebean;
 @Repository
 public class RoleDao {
 	
-	@Autowired //create 1 object only
+	  @Autowired //create 1 object only
 		JdbcTemplate stmt;   //to execute sql query methods
 		//update-->insert update delete
 		//query-->select-->read only
 		public void insertrole(Rolebean role) 
 		{
-			stmt.update("insert into role (rolename) values(?)",role.getRoleName());  //? is a placeholder which is compiled only one time and replace the value of rolename every time.
+			stmt.update("insert into role (rolename) values (?) ",role.getRoleName());  //? is a placeholder which is compiled only one time and replace the value of rolename every time.
 		}
 		
 		public List<Rolebean> getAllRoles()

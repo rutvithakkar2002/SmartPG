@@ -22,7 +22,10 @@ public class PgRateDao {
 
 	public List<PgRateBean> getallpgrate()
 	{
-		List<PgRateBean> pg =  stmt.query("select * from pgrate",new BeanPropertyRowMapper<PgRateBean>(PgRateBean.class));
+		//List<PgRateBean> pg =  stmt.query("select * from pgrate",new BeanPropertyRowMapper<PgRateBean>(PgRateBean.class));
+		
+		List<PgRateBean> pg =  stmt.query("select pr.*,p.pgname,p.pgaddress,p.city,p.state from pgrate pr,pg p where p.pgid=pr.pgid",new BeanPropertyRowMapper<PgRateBean>(PgRateBean.class));
+		
 		return pg;
 	}
 	public void deletepgrate(int pgrateid)

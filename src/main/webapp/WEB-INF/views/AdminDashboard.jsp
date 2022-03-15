@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,15 +69,16 @@
                   <img src="assets/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
                 </div>
+               
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">David Greymaax</p>
+                  <p class="mb-1 text-black">${users.firstName}</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="logout">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
             </li>
@@ -182,16 +186,16 @@
         </div>
       </nav>
 		<!-- partial -->
-		<div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top"> 
-		<!-- partial:partials/_sidebar.html -->
-		<jsp:include page="AdminSideBar.jsp"/>
+		<div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
+			<!-- partial:partials/_sidebar.html -->
+			<jsp:include page="AdminSideBar.jsp" />
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
 					<div class="page-header">
 						<h3 class="page-title">
 							<span class="page-title-icon bg-gradient-primary text-white me-2">
-								<i class="mdi mdi-home"></i>
+								<i class="mdi mdi-home"></i> 
 							</span> Admin Dashboard
 						</h3>
 						<nav aria-label="breadcrumb">
@@ -210,11 +214,11 @@
 									<img src="assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image">
 									<h4 class="font-weight-normal mb-3">
-										Weekly Sales <i
+										Total Users <i
 											class="mdi mdi-chart-line mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">$ 15,0000</h2>
-									<h6 class="card-text">Increased by 60%</h6>
+									<h2 class="mb-5">${totalusercount}</h2>
+									
 								</div>
 							</div>
 						</div>
@@ -224,11 +228,11 @@
 									<img src="assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image">
 									<h4 class="font-weight-normal mb-3">
-										Weekly Orders <i
+										Total PG<i
 											class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">45,6334</h2>
-									<h6 class="card-text">Decreased by 10%</h6>
+									<h2 class="mb-5">${totalpgcount }</h2>
+					
 								</div>
 							</div>
 						</div>
@@ -238,7 +242,7 @@
 									<img src="assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image">
 									<h4 class="font-weight-normal mb-3">
-										Visitors Online <i
+										TOtal Revenue<i
 											class="mdi mdi-diamond mdi-24px float-right"></i>
 									</h4>
 									<h2 class="mb-5">95,5741</h2>

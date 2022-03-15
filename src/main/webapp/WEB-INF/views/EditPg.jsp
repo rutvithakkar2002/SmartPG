@@ -1,52 +1,321 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Edit PG</title>
+
+<jsp:include page="AllCss.jsp"></jsp:include>
+
+
 </head>
 <body>
-<form action="updatepg" method="post" >
-		<input type="hidden" value="${pg.pgid}" name="pgid"/>   <!-- we have to upadate only rolename through roleid so, we have kept roleid type as hidden -->
-		
-		Pg Address:<select name="pgaddress">
-<option>--------Select PG----------</option>
-<c:forEach items="${pgs}" var="p">
-<option value="${p.pgid}">${p.pgaddress}:${p.city} </option> 
 
-</c:forEach>
-</select>
-<br><br>
-PGAddress:<textarea id="textarea" rows="5" cols="30" name="pgaddress" value="${pg.pgaddress }"></textarea><br><br>
-		
-		PG Lattitude : <input type="text" name="pglattitude" value="${pg.pglattitude }"/><br><br>
-		PG Longitude : <input type="text" name="pglongitude" value="${pg.pglongitude }"/><br><br>
-		PG Phone No : <input type="text" name="phno" value="${pg.phno }"/><br><br>
-		For Whom: <input type="text" name="forwhom" value="${pg.forwhom}"/><br><br>
-		city : <input type="text" name="city" value="${pg.city }"/><br><br>
-		State : <input type="text" name="state" value="${pg.state }"/><br><br>
-		Country : <input type="text" name="country" value="${pg.country}"/><br><br>
-		Is Available : <input type="text" name="isavailable" value="${pg.isavailable }"/><br><br>
-		
-		
-		
-		
-		
-subid:<select name="subscription">
-<option>--------Select Subscription----------</option>
-<c:forEach items="${subscription}" var="s">
-<option value="${s.subid}">${s.timeduration}:${s.amount} </option> 
+	<div class="container-scroller">
 
-</c:forEach>
-</select>
-<br><br>
-		
-		
-		
-		<input type="submit" value="Update PG"/>
-	</form>
+		<div class="row p-0 m-0 proBanner d-flex" id="proBanner">
+
+			
+		</div>
+		<!-- partial:partials/_navbar.html -->
+		<nav
+			class="navbar default-layout-navbar col-lg-12 col-12 p-0 d-flex flex-row fixed-top">
+			<div
+				class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+				<h2 class="navbar-brand brand-logo">SMART pG fINDER</h2>
+			</div>
+			<div class="navbar-menu-wrapper d-flex align-items-stretch">
+				<button class="navbar-toggler navbar-toggler align-self-center"
+					type="button" data-toggle="minimize">
+					<span class="mdi mdi-menu"></span>
+				</button>
+				<div class="search-field d-none d-md-block">
+					<form class="d-flex align-items-center h-100" action="#">
+						<div class="input-group">
+							<div class="input-group-prepend bg-transparent">
+								<i class="input-group-text border-0 mdi mdi-magnify"></i>
+							</div>
+							<input type="text" class="form-control bg-transparent border-0"
+								placeholder="Search projects">
+						</div>
+					</form>
+				</div>
+				<ul class="navbar-nav navbar-nav-right">
+					<li class="nav-item nav-profile dropdown"><a
+						class="nav-link dropdown-toggle" id="profileDropdown" href="#"
+						data-bs-toggle="dropdown" aria-expanded="false">
+							<div class="nav-profile-img">
+								<img src="assets/images/faces/face1.jpg" alt="image"> <span
+									class="availability-status online"></span>
+							</div>
+
+							<div class="nav-profile-text">
+								<p class="mb-1 text-black">${users.firstName}</p>
+							</div>
+					</a>
+						<div class="dropdown-menu navbar-dropdown"
+							aria-labelledby="profileDropdown">
+							<a class="dropdown-item" href="#"> <i
+								class="mdi mdi-cached me-2 text-success"></i> Activity Log
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#"> <i
+								class="mdi mdi-logout me-2 text-primary"></i> Signout
+							</a>
+						</div></li>
+					<li class="nav-item d-none d-lg-block full-screen-link"><a
+						class="nav-link"> <i class="mdi mdi-fullscreen"
+							id="fullscreen-button"></i>
+					</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link count-indicator dropdown-toggle"
+						id="messageDropdown" href="#" data-bs-toggle="dropdown"
+						aria-expanded="false"> <i class="mdi mdi-email-outline"></i> <span
+							class="count-symbol bg-warning"></span>
+					</a>
+						<div
+							class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+							aria-labelledby="messageDropdown">
+							<h6 class="p-3 mb-0">Messages</h6>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<img src="assets/images/faces/face4.jpg" alt="image"
+										class="profile-pic">
+								</div>
+								<div
+									class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+									<h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark
+										send you a message</h6>
+									<p class="text-gray mb-0">1 Minutes ago</p>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<img src="assets/images/faces/face2.jpg" alt="image"
+										class="profile-pic">
+								</div>
+								<div
+									class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+									<h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh
+										send you a message</h6>
+									<p class="text-gray mb-0">15 Minutes ago</p>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<img src="assets/images/faces/face3.jpg" alt="image"
+										class="profile-pic">
+								</div>
+								<div
+									class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+									<h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile
+										picture updated</h6>
+									<p class="text-gray mb-0">18 Minutes ago</p>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<h6 class="p-3 mb-0 text-center">4 new messages</h6>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link count-indicator dropdown-toggle"
+						id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+							<i class="mdi mdi-bell-outline"></i> <span
+							class="count-symbol bg-danger"></span>
+					</a>
+						<div
+							class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+							aria-labelledby="notificationDropdown">
+							<h6 class="p-3 mb-0">Notifications</h6>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<div class="preview-icon bg-success">
+										<i class="mdi mdi-calendar"></i>
+									</div>
+								</div>
+								<div
+									class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+									<h6 class="preview-subject font-weight-normal mb-1">Event
+										today</h6>
+									<p class="text-gray ellipsis mb-0">Just a reminder that you
+										have an event today</p>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<div class="preview-icon bg-warning">
+										<i class="mdi mdi-settings"></i>
+									</div>
+								</div>
+								<div
+									class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+									<h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
+									<p class="text-gray ellipsis mb-0">Update dashboard</p>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item preview-item">
+								<div class="preview-thumbnail">
+									<div class="preview-icon bg-info">
+										<i class="mdi mdi-link-variant"></i>
+									</div>
+								</div>
+								<div
+									class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+									<h6 class="preview-subject font-weight-normal mb-1">Launch
+										Admin</h6>
+									<p class="text-gray ellipsis mb-0">New admin wow!</p>
+								</div>
+							</a>
+							<div class="dropdown-divider"></div>
+							<h6 class="p-3 mb-0 text-center">See all notifications</h6>
+						</div></li>
+					<li class="nav-item nav-logout d-none d-lg-block"></li>
+
+				</ul>
+				<button
+					class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+					type="button" data-toggle="offcanvas">
+					<span class="mdi mdi-menu"></span>
+				</button>
+			</div>
+		</nav>
+		<!-- partial -->
+		<div
+			class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
+			<!-- partial:partials/_sidebar.html -->
+			<jsp:include page="AdminSideBar.jsp" />
+			<!-- partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="page-header">
+						<h3 class="page-title">
+							<span class="page-title-icon bg-gradient-primary text-white me-2">
+								<i class="mdi mdi-home"></i>
+							</span> Admin Dashboard
+						</h3>
+						<nav aria-label="breadcrumb">
+							<ul class="breadcrumb">
+								<li class="breadcrumb-item active" aria-current="page"><span></span>Overview
+									<i
+									class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+								</li>
+							</ul>
+						</nav>
+					</div>
+
+
+					<form action="updatepg" method="post">
+						<input type="hidden" value="${pg.pgid}" name="pgid" />
+
+						<div class="form-group">
+							<label> PG Name : </label><input type="text" name="pgname"
+								value="${pg.pgname }" /><br><br>
+			
+							PGAddress:
+		<textarea id="textarea" rows="5" cols="30" name="pgaddress"
+			value="">${pg.pgaddress }</textarea>
+		<br><br>
+		<br> PG Lattitude : <input type="text" name="pglattitude"
+			value="${pg.pglattitude }" /><br>
+		<br> PG Longitude : <input type="text" name="pglongitude"
+			value="${pg.pglongitude }" /><br>
+		<br> PG Phone No : <input type="text" name="phno"
+			value="${pg.phno }" /><br>
+		<br> For Whom: <input type="text" name="forwhom"
+			value="${pg.forwhom}" /><br>
+		<br> city : <input type="text" name="city" value="${pg.city }" /><br>
+		<br> State : <input type="text" name="state" value="${pg.state }" /><br>
+		<br> Country : <input type="text" name="country"
+			value="${pg.country}" /><br>
+		<br> Is Available : <input type="text" name="isavailable"
+			value="${pg.isavailable }" /><br>
+			
+		<br> subscription:<select name="subid">
+			<option>--------Select Subscription----------</option>
+			<c:forEach items="${subscription}" var="s">
+				<option value="${s.subid}">${s.timeduration}:${s.amount}</option>
+			</c:forEach>
+		</select> <br>
+			
+						</div>
+						<button type="submit" class="btn btn-gradient-primary me-2">Update
+							PG</button>
+
+						<button class="btn btn-light">Cancel</button>
+					</form>
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+	<jsp:include page="AllJs.jsp"></jsp:include>
+	<!-- End custom js for this page -->
+
+
+
+
+
+
+
 </body>
 </html>
+
+
+
+<!-- 
+
+
+<form action="updatepg" method="post">
+		<input type="hidden" value="${pg.pgid}" name="pgid" />
+		
+		Pg Address:<select name="pgaddress">
+			<option>--------Select PG----------</option>
+			<c:forEach items="${pgs}" var="p">
+				<option value="${p.pgid}">${p.pgaddress}:${p.city}</option>
+
+			</c:forEach>
+		</select> <br>
+		<br> PGAddress:
+		<textarea id="textarea" rows="5" cols="30" name="pgaddress"
+			value="${pg.pgaddress }"></textarea>
+		<br>
+		<br> PG Lattitude : <input type="text" name="pglattitude"
+			value="${pg.pglattitude }" /><br>
+		<br> PG Longitude : <input type="text" name="pglongitude"
+			value="${pg.pglongitude }" /><br>
+		<br> PG Phone No : <input type="text" name="phno"
+			value="${pg.phno }" /><br>
+		<br> For Whom: <input type="text" name="forwhom"
+			value="${pg.forwhom}" /><br>
+		<br> city : <input type="text" name="city" value="${pg.city }" /><br>
+		<br> State : <input type="text" name="state" value="${pg.state }" /><br>
+		<br> Country : <input type="text" name="country"
+			value="${pg.country}" /><br>
+		<br> Is Available : <input type="text" name="isavailable"
+			value="${pg.isavailable }" /><br>
+		<br> subid:<select name="subscription">
+			<option>--------Select Subscription----------</option>
+			<c:forEach items="${subscription}" var="s">
+				<option value="${s.subid}">${s.timeduration}:${s.amount}</option>
+
+			</c:forEach>
+		</select> <br>
+		<br> <input type="submit" value="Update PG" />
+	</form>
+
+
+ -->

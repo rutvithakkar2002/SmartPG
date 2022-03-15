@@ -8,14 +8,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.bean.PgBean;
-import com.bean.Rolebean;
+
 @Repository
 public class PgDao {
 	@Autowired
 	JdbcTemplate stmt;
 	public void addpg(PgBean p) {
 		// TODO Auto-generated method stub
-		stmt.update("insert into pg (userid,pgaddress,pglattitude,pglongitude,phno,forwhom,city,state,country,isavailable,subid,createdon) values(?,?,?,?,?,?,?,?,?,?,?,?)",p.getUserId(),p.getPgaddress(),p.getPglattitude(),p.getPglongitude(),p.getPhno(),p.getForwhom(),p.getCity(),p.getState(),p.getCountry(),p.isIsavailable(),p.getSubid(),p.getCreatedon());
+		stmt.update("insert into pg (userid,pgname,pgaddress,pglattitude,pglongitude,phno,forwhom,city,state,country,isavailable,subid,createdon) values(?,?,?,?,?,?,?,?,?,?,?,?,?)",p.getUserId(),p.getPgname(),p.getPgaddress(),p.getPglattitude(),p.getPglongitude(),p.getPhno(),p.getForwhom(),p.getCity(),p.getState(),p.getCountry(),p.isIsavailable(),p.getSubid(),p.getCreatedon());
 	}
 	
 	public List<PgBean> getallpg()
@@ -32,7 +32,7 @@ public class PgDao {
 	}
 	public void updatepg(PgBean pg)
 	{
-		stmt.update("update pg set pgaddress=?,pglattitude=?,pglongitude=?,phno=?,forwhom=?,city=?,state=?,country=?,isavailable=?,subid=?,createdon=? where pgid=?",pg.getPgaddress(),pg.getPglattitude(),pg.getPglongitude(),pg.getPhno(),pg.getForwhom(),pg.getCity(),pg.getState(),pg.getCountry(),pg.isIsavailable(),pg.getSubid(),pg.getCreatedon(),pg.getPgid());
+		stmt.update("update pg set pgname=?,pgaddress=?,pglattitude=?,pglongitude=?,phno=?,forwhom=?,city=?,state=?,country=?,isavailable=?,subid=?,createdon=? where pgid=?",pg.getPgname(),pg.getPgaddress(),pg.getPglattitude(),pg.getPglongitude(),pg.getPhno(),pg.getForwhom(),pg.getCity(),pg.getState(),pg.getCountry(),pg.isIsavailable(),pg.getSubid(),pg.getCreatedon(),pg.getPgid());
 	}
 
 	public void deletepg(int pgid) {

@@ -43,10 +43,10 @@ public class BookedPgCustomerDetailsController {
 	public String savebookeduser(BookedPgCustomerDetailsBean book)
 	{
 		bookeduserdao.insertbookeduser(book);
-		 return "redirect:/listsubscribeuser";
+		 return "redirect:/listbookeduser";
 	}
-	@GetMapping("/listsubscribeuser")   //It will get data from list
-	public String listsubscribeuser(Model model)
+	@GetMapping("/listbookeduser")   //It will get data from list
+	public String listbookeduser(Model model)
 	{
 		List<BookedPgCustomerDetailsBean>book =bookeduserdao.getallsubscribeuser();
 		model.addAttribute("book",book);
@@ -57,7 +57,7 @@ public class BookedPgCustomerDetailsController {
 	public String deletebookeduser(@PathVariable("bookedid") int bookedid)  //pathvariable helps to store roleid in 1 variable..
 	{
 		bookeduserdao.deletebookeduser(bookedid);
-		return "redirect:/listsubscribeuser";
+		return "redirect:/listbookeduser";
 	}
 	
 	@GetMapping("/editbookeduser")
@@ -72,6 +72,6 @@ public class BookedPgCustomerDetailsController {
 	@PostMapping("/updatebookedUser")   //for database updation
 	public String updatebookedUser(BookedPgCustomerDetailsBean book,Model model) {
 		bookeduserdao.updateBookedUser(book);
-		return "redirect:/listsubscribeuser";
+		return "redirect:/listbookeduser";
 	}
 }
