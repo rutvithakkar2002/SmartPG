@@ -16,7 +16,7 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="admindashboard">
                 <span class="menu-title">Admin Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -34,7 +34,7 @@
                   <li class="nav-item"> <a class="nav-link" href="getallusers">Users</a></li>
                    <li class="nav-item"> <a class="nav-link" href="listamenity"> Amenity</a></li>
                    <li class="nav-item"> <a class="nav-link" href="listplans">Subscription Plans</a></li>
-                <li class="nav-item"> <a class="nav-link" href="listtransactiondetail"> Transaction Detail</a></li>
+              
                 <li class="nav-item"> <a class="nav-link" href="listsubscribedusers">Subscribed Users Detail</a></li>
                	  
               <li class="nav-item"> <a class="nav-link" href="getallpgrate"> PG Rate</a></li>
@@ -56,12 +56,20 @@
               </a>
               <div class="collapse show" id="general-pages" style="">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="getallpg">PG</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="getallusers">User</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="getallpgreport">PG</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="getalluserreport">User</a></li>
+                  
+                   <li class="nav-item"> <a class="nav-link" href="offerwiseuserreport">Subscribed User</a></li>
+                  
+                 
+                     <li class="nav-item"> <a class="nav-link" href="categorywisepgreport">categoryWise Pg</a></li>
+                  
+                  
+                  
                 </ul>
               </div>
             </li>	 
-            <li class="nav-item"> 
+          <!--   <li class="nav-item"> 
               <a class="nav-link" href="pages/forms/basic_elements.html">
                 <span class="menu-title">Forms</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
@@ -75,21 +83,8 @@
                 <span class="menu-title">Tables</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>
-            </li>
+            </li> -->
             
-            <li class="nav-item sidebar-actions">
-              <span class="nav-link">
-                <div class="border-bottom">
-                  <h6 class="font-weight-normal mb-3">Projects</h6>
-                </div>
-                <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Add a project</button>
-                <div class="mt-4">
-                  <div class="border-bottom">
-                  </div>
-                  <ul class="gradient-bullet-list mt-4">
-                  </ul>
-                </div>
-              </span>
-            </li>
+         
           </ul>
         </nav>

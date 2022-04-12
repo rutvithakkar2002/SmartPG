@@ -28,8 +28,8 @@ public class TransactionDetailsController {
 	@GetMapping("/newtransactiondetail")   //type url in chrome
 	public String newtransactiondetail(Model model)
 	{
-		List<UserBean>user=userdao.getAllUsers();
-		model.addAttribute("user",user);
+		List<UserBean>users=userdao.getAllUsers2();
+		model.addAttribute("users",users);
 		List<TransactionBean>payment=transactiondao.getAllTransaction();
 		model.addAttribute("payment",payment);
 		return "NewTransactionDetail";  //call jsp
@@ -45,6 +45,11 @@ public class TransactionDetailsController {
 	{
 		List<TransactionDetailsBean>transactiondetails =transactiondetaildao.getalltransactiondetail();
 		model.addAttribute("transactiondetails",transactiondetails);
+		
+		List<UserBean>users=userdao.getAllUsers2();
+		model.addAttribute("users", users);
+		
+		
 		return "ListTransactionDetail";
 	}
 	@GetMapping("/deletetransactiondetail/{transactionid}")

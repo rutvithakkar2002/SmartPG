@@ -3,6 +3,9 @@ package com.bean;
 public class PgBean {
 	private int pgid;
 	private int userId;
+	private String firstName;
+	private String lastName;
+	private String email;
 	private String pgname;
 	private String pgaddress;
 	private String pglongitude;
@@ -13,9 +16,15 @@ public class PgBean {
 	private String state;
 	private String country;
 	private boolean isavailable;
+	
 	private int subid;
+	private String offername;
+	private String timeduration;
+	private int amount;
+	
+	
 	private String createdon;
-	private String firstName;
+
 	public int getPgid()
 	{
 		return pgid;
@@ -39,6 +48,19 @@ public class PgBean {
 		this.userId = userId;
 	}
 	
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getPgaddress() {
 		return pgaddress;
 	}
@@ -100,6 +122,27 @@ public class PgBean {
 	}
 	public void setSubid(int subid) {
 		this.subid = subid;
+	}
+	
+	
+	
+	public String getOffername() {
+		return offername;
+	}
+	public void setOffername(String offername) {
+		this.offername = offername;
+	}
+	public String getTimeduration() {
+		return timeduration;
+	}
+	public void setTimeduration(String timeduration) {
+		this.timeduration = timeduration;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 	public String getCreatedon() {
 		return createdon;

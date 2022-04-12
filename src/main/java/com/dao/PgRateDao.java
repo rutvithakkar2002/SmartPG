@@ -41,9 +41,7 @@ public class PgRateDao {
 	
 	public void updatepgrate(PgRateBean rate)
 	{
-		stmt.update("update pgrate set pgid=?,onesharing=?,twosharing=?,threesharing=?,foursharing=? where pgrateid=?",rate.getPgid(),rate.getOnesharing(),rate.getTwosharing(),rate.getThreesharing(),rate.getFoursharing(),rate.getPgrateid());
+		stmt.update("update pgrate set onesharing=?,twosharing=?,threesharing=?,foursharing=? where pgrateid=?",rate.getOnesharing(),rate.getTwosharing(),rate.getThreesharing(),rate.getFoursharing(),rate.getPgrateid());
 	}
-	
-	
 	
 }

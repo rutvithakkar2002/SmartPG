@@ -19,10 +19,10 @@ public class BookedUserDao {
 	}
 	public List<BookedPgCustomerDetailsBean> getallsubscribeuser() {
 		// TODO Auto-generated method stub
-		//	List<BookedPgCustomerDetailsBean> sub=stmt.query("select b.*,u.firstname,u.lastname,p.pgname,p.pgaddress  from bookedpgdetails b,users u,pg p where b.userId=u.userId and b.pgid=p.pgid",new BeanPropertyRowMapper<BookedPgCustomerDetailsBean>(BookedPgCustomerDetailsBean.class));
+		List<BookedPgCustomerDetailsBean> sub=stmt.query("select b.*,u.firstname,u.lastname,u.email,p.pgname,p.pgaddress,p.city  from bookedpgdetails b,users u,pg p where b.userId=u.userId and b.pgid=p.pgid",new BeanPropertyRowMapper<BookedPgCustomerDetailsBean>(BookedPgCustomerDetailsBean.class));
 		
 		
-		List<BookedPgCustomerDetailsBean> sub=stmt.query("select * from bookedpgdetails",new BeanPropertyRowMapper<BookedPgCustomerDetailsBean>(BookedPgCustomerDetailsBean.class));
+	//	List<BookedPgCustomerDetailsBean> sub=stmt.query("select * from bookedpgdetails",new BeanPropertyRowMapper<BookedPgCustomerDetailsBean>(BookedPgCustomerDetailsBean.class));
 		return sub;
 	}
 	public void deletebookeduser(int bookedid) {

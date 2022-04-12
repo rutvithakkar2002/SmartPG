@@ -25,7 +25,7 @@
 								href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/?utm_source=organic&amp;utm_medium=banner&amp;utm_campaign=buynow_demo"
 								target="_blank" class="btn me-2 buy-now-btn border-0">Get
 								Pro</a>
-							
+							<jsp:include page="AdminHeader.jsp"></jsp:include>
 						</div>
 					</div>
 					<div class="d-flex align-items-center justify-content-between">
@@ -184,7 +184,7 @@
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper pt-0 proBanner-padding-top"> 
 		<!-- partial:partials/_sidebar.html -->
-		
+		<jsp:include page="AdminSideBar.jsp"/>
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">

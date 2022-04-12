@@ -1,7 +1,5 @@
 package com.controller;
 
-
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -50,10 +48,11 @@ public class UserController {
 		String encPassword = bcryptPasswordEncoder.encode(plainPassword);//10 
 		System.out.println(encPassword);
 		user.setPassword(encPassword);
+		
 		String date = getDate();
 		user.setCreatedat(date);
-		userDao.adduser(user);  //userbean -->data store
 		
+		userDao.adduser(user);  //userbean -->data store
 		
 		return "redirect:/login";
 	}
@@ -79,7 +78,7 @@ public class UserController {
 	public String edituser(@RequestParam("userId") int userId,Model model)//? ->pass the value
 	{
 		UserBean user = userDao.getUserById(userId);
-		model.addAttribute("user", user);
+		model.addAttribute("useredited", user);
 		return "Edituser";
 	}
 	@PostMapping("/updateuser")   //for database updation

@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.PgBean;
-import com.bean.Rolebean;
+
+import com.bean.SubscribedUserBean;
 import com.bean.SubscriptionBean;
-import com.bean.UserBean;
+
 import com.dao.PgDao;
+import com.dao.SubscribedUsersDao;
 import com.dao.SubscriptionDao;
 import com.dao.UserDao;
 
@@ -26,19 +30,33 @@ public class PgDetail {
 	PgDao pgdao;
 	@Autowired
 	SubscriptionDao subscriptiondao;
+	@Autowired
+	SubscribedUsersDao subscribedUsersDao;
+	
+	public static String getDate()
+	{
+		Date date=new Date();
+		SimpleDateFormat s=new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
+		return s.format(date);
+	}
+	
+	
 	@GetMapping("/newpg")
 	public String newpg(Model model)
 	{
-		List<UserBean> users=userdao.getAllUsers();
-		List<SubscriptionBean> subscriptions=subscriptiondao.getAllplans();
-		
+		List<SubscribedUserBean> users=subscribedUsersDao.getAllSubscribedUsers();
+//		List<SubscriptionBean> subscriptions=subscriptiondao.getAllplans();
+//		
 		model.addAttribute("users",users);
-		model.addAttribute("subscriptions",subscriptions);
+//		model.addAttribute("subscriptions",subscriptions);
 		return "NewPG";
 	}
 	@PostMapping("/savepg")
 	public String savepg(PgBean p)
 	{
+		String date = getDate();
+		p.setCreatedon(date);
+		
 		pgdao.addpg(p);
 		return "redirect:/getallpg";
 	}
@@ -47,6 +65,10 @@ public class PgDetail {
 	{
 		List<PgBean> pgs=pgdao.getallpg();
 		model.addAttribute("pgs",pgs);
+		
+		List<SubscriptionBean> subscriptions=subscriptiondao.getAllplans();
+		model.addAttribute("subscriptions",subscriptions);
+		
 		return "ListPg";
 	}
 	@GetMapping("/deletepg/{pgid}")

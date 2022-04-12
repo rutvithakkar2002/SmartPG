@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bean.ForgetPasswordBean;
-import com.bean.LoginBean;
+//import com.bean.ForgetPasswordBean;
+//import com.bean.LoginBean;
 import com.bean.UserBean;
 import com.dao.UserDao;
+import com.service.EmailService;
 
 @Controller
 public class SessionController {
@@ -22,6 +23,9 @@ public class SessionController {
 	@Autowired
 	UserDao userDao;
 
+	@Autowired
+	EmailService emailService;
+	
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
 	
@@ -63,8 +67,7 @@ public class SessionController {
 			//admin  AdminDashBoard 
 			//Pg owner 
 			//Customer 
-			if(dbUser.getRoleId()==2)
-			{
+			if(dbUser.getRoleId()==2) {
 				return "redirect:/pgownerdashboard";
 			}
 			else if(dbUser.getRoleId()==4)
@@ -115,6 +118,9 @@ public class SessionController {
 			model.addAttribute("msg", "Otp is generated and sent to your email!!!");  //database to jsp
 			System.out.println("your otp is => " + otp);
 			/// send email to user
+			
+			emailService.sendEmailForForgetPassword(user.getEmail(), otp+"");
+			
 
 			return "NewPassword";
 		}
@@ -155,9 +161,5 @@ public class SessionController {
 		System.out.println(user.getEmail());
 		System.out.println(user.getPassword());
 		return "Login";
-	}
-	
-	
-	
-	
+	}	
 }	

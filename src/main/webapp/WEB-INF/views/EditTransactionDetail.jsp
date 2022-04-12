@@ -11,33 +11,7 @@
 
 <div class="container-scroller">
 
-		<div class="row p-0 m-0 proBanner d-flex" id="proBanner">
 		
-			<div class="col-md-12 p-0 m-0">
-				<div
-					class="card-body card-body-padding d-flex align-items-center justify-content-between">
-					<div class="ps-lg-1">
-						<div class="d-flex align-items-center justify-content-between">
-							<p class="mb-0 font-weight-medium me-3 buy-now-text">Free
-								24/7 customer support, updates, and more with this template!</p>
-							<a
-								href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/?utm_source=organic&amp;utm_medium=banner&amp;utm_campaign=buynow_demo"
-								target="_blank" class="btn me-2 buy-now-btn border-0">Get
-								Pro</a>
-							<jsp:include page="AdminHeader.jsp"></jsp:include>
-						</div>
-					</div>
-					<div class="d-flex align-items-center justify-content-between">
-						<a
-							href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"><i
-							class="mdi mdi-home me-3 text-white"></i></a>
-						<button id="bannerClose" class="btn border-0 p-0">
-							<i class="mdi mdi-close text-white me-0"></i>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<!-- partial:partials/_navbar.html -->
 		<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 d-flex flex-row fixed-top">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -187,21 +161,6 @@
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
-					<div class="page-header">
-						<h3 class="page-title">
-							<span class="page-title-icon bg-gradient-primary text-white me-2">
-								<i class="mdi mdi-home"></i>
-							</span> Admin Dashboard
-						</h3>
-						<nav aria-label="breadcrumb">
-							<ul class="breadcrumb">
-								<li class="breadcrumb-item active" aria-current="page"><span></span>Overview
-									<i
-									class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-								</li>
-							</ul>
-						</nav>
-					</div>
 					
 					
 					
@@ -210,8 +169,8 @@
 					
 					<div class="form-group">
 								
-		<label>	Rating :</label> <input type="text" name="rating" placeholder="enter Highest Rate" value="${feedback.rating }"/><br><Br>
-		<label>	Message:</label> <input type="text" name="message" placeholder="enter Message" value="${feedback.message}"/><br><Br>						
+		Rating :<input type="text" name="rating" placeholder="enter Highest Rate" value="${feedback.rating }"/><br><Br>
+			Message: <input type="text" name="message" placeholder="enter Message" value="${feedback.message}"/><br><Br>						
 													
 								
 					</div>

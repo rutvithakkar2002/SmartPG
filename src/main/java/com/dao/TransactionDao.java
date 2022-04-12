@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.bean.FeedbackBean;
 import com.bean.Rolebean;
 import com.bean.TransactionBean;
 
@@ -19,7 +20,10 @@ public class TransactionDao {
 		stmt.update("insert into transaction (userid,rate,pgid) values(?,?,?)",transaction.getUserId(),transaction.getRate(),transaction.getPgid());  
 	}
 	public List<TransactionBean> getAllTransaction() {
-		List<TransactionBean> transaction=stmt.query("select * from transaction",new BeanPropertyRowMapper<TransactionBean>(TransactionBean.class));
+	//	List<TransactionBean> transaction=stmt.query("select * from transaction",new BeanPropertyRowMapper<TransactionBean>(TransactionBean.class));
+		
+		List<TransactionBean>transaction=stmt.query("select t.*,u.firstname,u.lastname,u.email,p.pgname,p.pgaddress,p.city from transaction t,users u,pg p where u.userId=t.userId and p.pgid=t.pgid",new BeanPropertyRowMapper<TransactionBean>(TransactionBean.class));
+		
 		return transaction;
 	}
 	public void deletetransaction(int paymentid) {

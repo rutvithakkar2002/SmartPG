@@ -1,33 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>List Amenity</title>
 
+<meta charset="ISO-8859-1">
+<title>list all Amenity</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 
 </head>
 <body>
-	
+
 	<div class="container-scroller">
 
-		<div class="row p-0 m-0 proBanner d-flex" id="proBanner">
+		<div class="row p-0 m-0 proBanner d-flex" >
 
 			<div class="col-md-12 p-0 m-0">
 				<div
 					class="card-body card-body-padding d-flex align-items-center justify-content-between">
-					<div class="ps-lg-1">
-						<div class="d-flex align-items-center justify-content-between">
-							<p class="mb-0 font-weight-medium me-3 buy-now-text">Free
-								24/7 customer support, updates, and more with this template!</p>
-							<a
-								href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/?utm_source=organic&amp;utm_medium=banner&amp;utm_campaign=buynow_demo"
-								target="_blank" class="btn me-2 buy-now-btn border-0">Get
-								Pro</a>
+					
 							<jsp:include page="AdminHeader.jsp"></jsp:include>
 						</div>
 					</div>
@@ -73,8 +65,9 @@
 								<img src="assets/images/faces/face1.jpg" alt="image"> <span
 									class="availability-status online"></span>
 							</div>
+
 							<div class="nav-profile-text">
-								<p class="mb-1 text-black">David Greymaax</p>
+								<p class="mb-1 text-black"></p>
 							</div>
 					</a>
 						<div class="dropdown-menu navbar-dropdown"
@@ -212,6 +205,8 @@
 		<div
 			class="container-fluid page-body-wrapper pt-0 proBanner-padding-top">
 			<!-- partial:partials/_sidebar.html -->
+	
+			<!-- partial:partials/_sidebar.html -->
 			<jsp:include page="AdminSideBar.jsp" />
 			<!-- partial -->
 			<div class="main-panel">
@@ -220,52 +215,52 @@
 						<h3 class="page-title">
 							<span class="page-title-icon bg-gradient-primary text-white me-2">
 								<i class="mdi mdi-home"></i>
-							</span> Admin Dashboard
+							</span> List Amenities
 						</h3>
-						<nav aria-label="breadcrumb">
-							<ul class="breadcrumb">
-								<li class="breadcrumb-item active" aria-current="page"><span></span>Overview
-									<i
-									class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-								</li>
-							</ul>
-						</nav>
 					</div>
-					
-					
-					
+
+
+
 					<div class="row">
-						<div class="col-md-7 grid-margin stretch-card">
+						<div class="col-md-10 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">List Amenity Table</h4>
-									<br>
-									<a href="newamenity">Add New Amenity</a>
-									<br><br>
+
+
+									<!-- 	<h4 class="card-title"></h4> -->
+
+
+									<br> <a href="newamenity">Add New Amenity</a> <br> <br>
 									<div class="table-responsive">
-										
+
+
+
 										<table id="listamenity" class="table table-striped">
 											<thead>
 												<tr amenity="row">
-													
-													<th>Amenity Id </th>
+
+													<th>Amenity Id</th>
 													<th>Amenity Name</th>
 													<th>action</th>
-													
+
 												</tr>
 											</thead>
 											<tbody>
 												<c:forEach items="${amenities}" var="amenity">
-												<tr>
-													<td>${amenity.amenityid}</td>	
-													<td>${amenity.amenityname}</td>
-													<td><a href="deleteamenity/${amenity.amenityid}">Delete</a>| <!-- when we submit then the roleid passed in url -->
-											 			<a href="editamenity?amenityid=${amenity.amenityid}">Edit</a>
-													</td>		
-												</tr>
-											</c:forEach>
+													<tr>
+														<td>${amenity.amenityid}</td>
+														<td>${amenity.amenityname}</td>
+														<td><a href="deleteamenity/${amenity.amenityid}">Delete</a>|
+															<!-- when we submit then the roleid passed in url --> <a
+															href="editamenity?amenityid=${amenity.amenityid}">Edit</a>
+														</td>
+													</tr>
+												</c:forEach>
 											</tbody>
 										</table>
+
+
+
 									</div>
 								</div>
 							</div>
@@ -275,19 +270,7 @@
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->
-				<footer class="footer">
-					<div class="container-fluid d-flex justify-content-between">
-						<span
-							class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright
-							© bootstrapdash.com 2021</span> <span
-							class="float-none float-sm-end mt-1 mt-sm-0 text-end">
-							Free <a
-							href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-							target="_blank">Bootstrap admin template</a> from
-							Bootstrapdash.com
-						</span>
-					</div>
-				</footer>
+
 				<!-- partial -->
 			</div>
 			<!-- main-panel ends -->
@@ -296,15 +279,17 @@
 	</div>
 	<!-- container-scroller -->
 	<jsp:include page="AllJs.jsp"></jsp:include>
+
+
 	<!-- End custom js for this page -->
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#listamenity').DataTable();
 		});
 	</script>
-	
-	
-	
+
+
+
 </body>
 </html>
 
@@ -331,7 +316,7 @@
 	<td>${amenity.amenityid}</td>	
 	<td>${amenity.amenityname}</td>
 	<td><a href="deleteamenity/${amenity.amenityid}">Delete</a>| <!-- when we submit then the roleid passed in url -->
-	<!-- 	<a href="editamenity?amenityid=${amenity.amenityid}">Edit</a>
+<!-- 	<a href="editamenity?amenityid=${amenity.amenityid}">Edit</a>
 	</td>		
 </tr>
 </c:forEach>

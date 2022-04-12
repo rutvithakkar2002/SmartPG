@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bean.PgBean;
 import com.bean.Rolebean;
 import com.bean.SubscribedUserBean;
 import com.bean.SubscriptionBean;
 import com.bean.UserBean;
-
+import com.dao.PgDao;
 import com.dao.SubscribedUsersDao;
 import com.dao.SubscriptionDao;
 import com.dao.UserDao;
@@ -23,8 +24,13 @@ import com.dao.UserDao;
 public class SubscribedUsersController {
 	@Autowired
 	SubscriptionDao subscriptiondao;
+	
 	@Autowired
 	UserDao userdao;
+	
+	@Autowired
+	PgDao pgdao;
+	
 	@Autowired
 	SubscribedUsersDao subscribedusersdao;
 	
@@ -33,8 +39,13 @@ public class SubscribedUsersController {
 	{
 		List<SubscriptionBean>subscription=subscriptiondao.getAllplans();
 		model.addAttribute("subscription", subscription);
-		List<UserBean>user=userdao.getAllUsers();
-		model.addAttribute("user",user);
+		
+//		List<PgBean>pg=pgdao.getallpg();
+//		model.addAttribute("pg",pg);
+//	
+		List<UserBean>users=userdao.getNonUnsubscribedUsers();
+		model.addAttribute("users",users);
+		
 		return "NewSubscribedUsers";
 	}
 	@PostMapping("savesubscribedusers")  //To read data from url
@@ -74,4 +85,10 @@ public class SubscribedUsersController {
 		subscribedusersdao.updatesubscribeduser(sub);
 		return "redirect:/listsubscribedusers";
 	}	
+	
+	
+	
+	
+	
+	
 }

@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.bean.Rolebean;
 import com.bean.UserBean;
 
 @Repository
@@ -23,6 +22,22 @@ public class UserDao {
 		List<UserBean>users=stmt.query("select u.*,r.roleName from users u ,role r where u.roleid=r.roleid",new BeanPropertyRowMapper<UserBean>(UserBean.class));
 		return users;
 	}
+	
+	public List<UserBean> getAllUsers2()
+	{
+		List<UserBean>users=stmt.query("select * from users",new BeanPropertyRowMapper<UserBean>(UserBean.class));
+		return users;
+	}
+	
+	public List<UserBean> getNonUnsubscribedUsers()
+	{
+		List<UserBean>users=stmt.query("select u.* from subscribedusers s full join users u using (userid) where roleid=2 and (to_date(enddateofsub,'DD/MM/YYYY') <current_date or subscribeid is null);\r\n"
+				,new BeanPropertyRowMapper<UserBean>(UserBean.class));
+		return users;
+	}
+	
+	
+	
 	public UserBean getUserByEmail(String email) {
 		UserBean dbUser = null;
 		try {
@@ -53,5 +68,9 @@ public class UserDao {
 		// TODO Auto-generated method stub
 		stmt.update("update users set password = ? where email = ?",user.getPassword(),user.getEmail());
 	}
-	
+	public List<UserBean> getUserByRoleId(int roleId)
+	{
+		return stmt.query("select u.*,r.rolename from users u,role r where u.roleid = r.roleid and u.roleid = ? ",
+				new BeanPropertyRowMapper<UserBean>(UserBean.class),new Object[] {roleId});
+	}
 }

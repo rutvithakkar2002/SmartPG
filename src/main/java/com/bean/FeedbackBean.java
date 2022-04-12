@@ -6,6 +6,10 @@ public class FeedbackBean {
 	private int rating;
 	private String message;
 	private int pgid;
+	private String pgname;
+	private String pgaddress;
+	
+	
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -62,4 +66,20 @@ public class FeedbackBean {
 	public void setPgid(int pgid) {
 		this.pgid = pgid;
 	}
+	public String getPgname() {
+		return pgname;
+	}
+	public void setPgname(String pgname) {
+		this.pgname = pgname;
+	}
+	public String getPgaddress() {
+		return pgaddress;
+	}
+	public void setPgaddress(String pgaddress) {
+		this.pgaddress = pgaddress;
+	}
+	
+	
+	
+	
 }

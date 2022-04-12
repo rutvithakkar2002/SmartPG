@@ -23,7 +23,8 @@ public class FeedbackDao {
 	
 	public List<FeedbackBean> getAllFeedback()
 	{
-		List<FeedbackBean>feedback=stmt.query("select f.*,u.firstname,u.lastName,u.email from feedbackcustomertopg f ,users u where u.userId=f.userId",new BeanPropertyRowMapper<FeedbackBean>(FeedbackBean.class));
+//		List<FeedbackBean>feedback=stmt.query("select f.*,u.firstname,u.lastName,u.email from feedbackcustomertopg f ,users u where u.userId=f.userId",new BeanPropertyRowMapper<FeedbackBean>(FeedbackBean.class));
+		List<FeedbackBean>feedback=stmt.query("select f.*,u.firstname,u.lastname,u.email,p.pgname,p.pgaddress from feedbackcustomertopg f,users u,pg p where u.userId=f.userId and p.pgid=f.pgid",new BeanPropertyRowMapper<FeedbackBean>(FeedbackBean.class));
 		return feedback;
 	}
 	public void deletefeedback(int feedbackid)

@@ -2,6 +2,7 @@ package com.bean;
 
 public class SubscriptionBean {
 	private int subid;
+	private String offername;
 	private String timeduration;
 	private float amount;
 	
@@ -11,6 +12,14 @@ public class SubscriptionBean {
 	}
 	public void setSubid(int subid) {
 		this.subid = subid;
+	}
+	
+	
+	public String getOffername() {
+		return offername;
+	}
+	public void setOffername(String offername) {
+		this.offername = offername;
 	}
 	public String getTimeduration() {
 		return timeduration;

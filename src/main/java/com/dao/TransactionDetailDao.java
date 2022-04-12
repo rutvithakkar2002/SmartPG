@@ -20,7 +20,9 @@ public class TransactionDetailDao {
 	}
 	public List<TransactionDetailsBean> getalltransactiondetail() {
 		// TODO Auto-generated method stub
-		List<TransactionDetailsBean> transaction=stmt.query("select * from transactiondetails",new BeanPropertyRowMapper<TransactionDetailsBean>(TransactionDetailsBean.class));
+	//	List<TransactionDetailsBean> transaction=stmt.query("select * from transactiondetails",new BeanPropertyRowMapper<TransactionDetailsBean>(TransactionDetailsBean.class));
+		
+		List<TransactionDetailsBean> transaction=stmt.query("select td.*,u.firstname,u.lastname,u.email from transactiondetails td,users u where u.userId=td.userId",new BeanPropertyRowMapper<TransactionDetailsBean>(TransactionDetailsBean.class));
 		return transaction;
 	}
 	public void deletetransactiondetail(int transactionid) {

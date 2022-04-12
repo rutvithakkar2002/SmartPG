@@ -29,8 +29,8 @@ public class TransactionController {
 	@GetMapping("/newtransaction")
 	public String newtransaction(Model model)
 	{
-		List<UserBean>user=userdao.getAllUsers();
-		model.addAttribute("user", user);
+		List<UserBean>users=userdao.getAllUsers2();
+		model.addAttribute("users", users);
 		List<PgBean>pg=pgdao.getallpg();
 		model.addAttribute("pg", pg);
 		return "NewTransaction";
@@ -44,6 +44,11 @@ public class TransactionController {
 	@GetMapping("/listtransaction")   //It will get data from list
 	public String listtransaction(Model model)
 	{
+		
+		List<UserBean>users=userdao.getAllUsers2();
+		model.addAttribute("users", users);
+		List<PgBean>pg=pgdao.getallpg();
+		model.addAttribute("pg", pg);
 		List<TransactionBean>transaction =transactiondao.getAllTransaction();
 		model.addAttribute("transaction",transaction);
 		return "ListTransaction";
