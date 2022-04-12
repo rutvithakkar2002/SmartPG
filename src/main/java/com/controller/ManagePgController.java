@@ -86,6 +86,8 @@ public class ManagePgController {
 		
 			model.addAttribute("users",users);
 			model.addAttribute("subscriptions",subscriptions);
+			
+			//....
 			return "PGownerNewPG";
 		}
 		
