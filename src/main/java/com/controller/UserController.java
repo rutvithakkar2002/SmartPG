@@ -1,8 +1,13 @@
 package com.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,9 +17,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bean.Rolebean;
 import com.bean.UserBean;
+import com.dao.ProfileDao;
 import com.dao.RoleDao;
 import com.dao.UserDao;
 
@@ -25,6 +32,8 @@ public class UserController {
 	RoleDao roleDao;
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	ProfileDao profiledao;
 	
 	public static String getDate()
 	{
@@ -48,9 +57,8 @@ public class UserController {
 		String encPassword = bcryptPasswordEncoder.encode(plainPassword);//10 
 		System.out.println(encPassword);
 		user.setPassword(encPassword);
-		
 		String date = getDate();
-		user.setCreatedat(date);
+		user.setCreatedat(date);	
 		
 		userDao.adduser(user);  //userbean -->data store
 		

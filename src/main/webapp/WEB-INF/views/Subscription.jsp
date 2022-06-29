@@ -51,30 +51,42 @@
 						<div class="form-group">
 							
 							OfferName: <input type="text" name="offername"
-								placeholder="enter OfferName"><br>
+								placeholder="enter OfferName" required><br>
 							<br>
 
 
-							Time Duration: <input type="text" name="timeduration"
-								placeholder="enter Time-Duration"><br>
-							<br> Amount:                 <input type="text" name="amount"
-								placeholder="enter appropriate amount for above time-duration">
+							Time Duration: 
+							<select name="timeduration" required>
+								<option value="">Select Duration</option>
+								<option value="1">1 Month</option>
+								<option value="2">2 Month</option>
+								<option value="3">3 Month</option>
+								<option value="4">4 Month</option>
+								<option value="5">5 Month</option>
+								<option value="6">6 Month</option>
+								<option value="7">7 Month</option>
+								<option value="8">8 Month</option>
+								<option value="9">9 Month</option>
+								<option value="10">10 Month</option>
+								<option value="11">11 Month</option>
+								<option value="12">12 Month</option>
+								
+							</select>
+							
+						<br><br><br> Amount:                 <input type="number" name="amount"
+								placeholder="enter appropriate amount for above time-duration"
+								min=0 required							>
+								
+								<br><br>
+							OfferDescription: <textarea name="offerdescription" wrap="soft" rows="10" cols="50" required></textarea><br><br>
+							
+								
 						</div>
 						<button type="submit" class="btn btn-gradient-primary me-2">Add
 							Plan</button>
 
 						<button class="btn btn-light">Cancel</button>
 					</form>
-
-
-
-
-
-
-
-
-
-
 
 
 				</div>

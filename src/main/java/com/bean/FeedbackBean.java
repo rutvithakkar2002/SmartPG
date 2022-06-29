@@ -8,8 +8,6 @@ public class FeedbackBean {
 	private int pgid;
 	private String pgname;
 	private String pgaddress;
-	
-	
 	private String firstName;
 	private String lastName;
 	private String email;

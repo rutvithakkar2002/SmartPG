@@ -16,7 +16,7 @@ import com.bean.PgBean;
 
 import com.bean.SubscribedUserBean;
 import com.bean.SubscriptionBean;
-
+import com.bean.UserBean;
 import com.dao.PgDao;
 import com.dao.SubscribedUsersDao;
 import com.dao.SubscriptionDao;
@@ -44,11 +44,12 @@ public class PgDetail {
 	@GetMapping("/newpg")
 	public String newpg(Model model)
 	{
-		List<SubscribedUserBean> users=subscribedUsersDao.getAllSubscribedUsers();
-//		List<SubscriptionBean> subscriptions=subscriptiondao.getAllplans();
+		List<UserBean> users=userdao.getAllUsers3();
+		//List<SubscribedUserBean> users=subscribedUsersDao.getAllSubscribedUsers();
+		List<SubscriptionBean> subscriptions=subscriptiondao.getAllplans();
 //		
 		model.addAttribute("users",users);
-//		model.addAttribute("subscriptions",subscriptions);
+		model.addAttribute("subscriptions",subscriptions);
 		return "NewPG";
 	}
 	@PostMapping("/savepg")
@@ -68,6 +69,9 @@ public class PgDetail {
 		
 		List<SubscriptionBean> subscriptions=subscriptiondao.getAllplans();
 		model.addAttribute("subscriptions",subscriptions);
+		
+		List<SubscribedUserBean> sub=subscribedUsersDao.getAllSubscribedUsers();
+		model.addAttribute("sub",sub);
 		
 		return "ListPg";
 	}

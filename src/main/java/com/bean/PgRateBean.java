@@ -6,12 +6,19 @@ public class PgRateBean {
 	
 	private String pgname;
 	private String pgaddress;
+	private String country;
 	private String city;
 	private String state;
 	private int onesharing;
 	private int twosharing;
 	private int threesharing;
 	private int foursharing;
+	private String imgurl;
+	
+	private String mainimgurl;
+	
+	private String phno;
+	
 	public int getPgrateid() {
 		return pgrateid;
 	}
@@ -75,4 +82,29 @@ public class PgRateBean {
 	public void setFoursharing(int foursharing) {
 		this.foursharing = foursharing;
 	}
+	public String getImgurl() {
+		return imgurl;
+	}
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
+	public String getMainimgurl() {
+		return mainimgurl;
+	}
+	public void setMainimgurl(String mainimgurl) {
+		this.mainimgurl = mainimgurl;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getPhno() {
+		return phno;
+	}
+	public void setPhno(String phno) {
+		this.phno = phno;
+	}
+	
 }

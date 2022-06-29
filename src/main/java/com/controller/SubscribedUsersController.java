@@ -59,6 +59,7 @@ public class SubscribedUsersController {
 	@GetMapping("/listsubscribedusers")   //It will get data from list
 	public String listsubscribedusers(Model model)
 	{
+		
 		List<SubscribedUserBean>sub =subscribedusersdao.getAllSubscribedUsers();
 		model.addAttribute("sub",sub);
 		

@@ -29,6 +29,12 @@ public class UserDao {
 		return users;
 	}
 	
+	
+	public List<UserBean> getAllUsers3()
+	{
+		List<UserBean>users=stmt.query("select * from users where roleid=2",new BeanPropertyRowMapper<UserBean>(UserBean.class));
+		return users;
+	}
 	public List<UserBean> getNonUnsubscribedUsers()
 	{
 		List<UserBean>users=stmt.query("select u.* from subscribedusers s full join users u using (userid) where roleid=2 and (to_date(enddateofsub,'DD/MM/YYYY') <current_date or subscribeid is null);\r\n"

@@ -19,6 +19,19 @@ public class PhotoDao {
 	public void insertphoto(PhotoBean photo) {
 		stmt.update("insert into photos (pgid,imgurl) values (?,?)",photo.getPgid(),photo.getImgurl());
 	}
+	
+	
+	public void insertimage(String path,int pgid)
+	{
+		
+		stmt.update("insert into photos (pgid,imgurl) values(?,?)",pgid,path);
+	}
+	
+	public void insertMainImage(String path,int pgid)
+	{
+		stmt.update("insert into pgmainimage (pgid,mainimgurl) values(?,?)",pgid,path);
+	}
+	
 	public List<PhotoBean> getAllPhoto()
 	{
 		List<PhotoBean>pg=stmt.query("select ph.*,p.pgaddress from Photos ph ,pg p where ph.pgid=p.pgid",new BeanPropertyRowMapper<PhotoBean>(PhotoBean.class));

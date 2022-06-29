@@ -6,7 +6,7 @@ public class SubscriptionBean {
 	private String timeduration;
 	private float amount;
 	
-	
+	private String offerdescription;
 	public int getSubid() {
 		return subid;
 	}
@@ -33,5 +33,10 @@ public class SubscriptionBean {
 	public void setAmount(float amount) {
 		this.amount = amount;
 	}
-	
+	public String getOfferdescription() {
+		return offerdescription;
+	}
+	public void setOfferdescription(String offerdescription) {
+		this.offerdescription = offerdescription;
+	}
 }

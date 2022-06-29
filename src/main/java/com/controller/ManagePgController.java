@@ -1,5 +1,8 @@
 package com.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bean.PgBean;
 import com.bean.SubscriptionBean;
 import com.bean.UserBean;
 import com.dao.PgDao;
+import com.dao.ProfileDao;
 import com.dao.SubscriptionDao;
 import com.dao.UserDao;
 
@@ -30,6 +35,9 @@ public class ManagePgController {
 	@Autowired
 	UserDao userdao;
 	
+	@Autowired
+	ProfileDao profiledao;
+	
 	@GetMapping("managepg")
 	public String managepgprofile(Model model)
 	{
@@ -39,6 +47,14 @@ public class ManagePgController {
 		
 		return "ManagePg";
 	}
+	
+	
+	@GetMapping("errorpage")
+	public String errorpage()
+	{
+			return "errorpage";
+	}
+	
 	
 	
 	@GetMapping("/editpgdetail")
@@ -72,16 +88,19 @@ public class ManagePgController {
 		UserBean user = (UserBean)session.getAttribute("user");
 		int userid = user.getUserId();
 		
-		int totalpgcount=pgdao.getAllUserSpecific(userid).size();
+	
+		//maximum PG logic
+		/*int totalpgcount=pgdao.getAllUserSpecific(userid).size();
 		model.addAttribute("totalpgcount",totalpgcount);
 		
-		if(totalpgcount>3)
+		System.out.println(totalpgcount);
+		if(totalpgcount==3)
 		{
 			return "errorpage";
 		}
 		else
-		{
-			List<UserBean> users=userdao.getAllUsers();
+		{*/
+			List<UserBean> users=userdao.getAllUsers3();
 			List<SubscriptionBean> subscriptions=subscriptiondao.getAllplans();
 		
 			model.addAttribute("users",users);
@@ -89,16 +108,8 @@ public class ManagePgController {
 			
 			//....
 			return "PGownerNewPG";
-		}
-		
-	
-		
-		
+		//}	
 	}
-	
-	
-	
-
 	
 	@GetMapping("/PGownereditpg")
 	public String PGownereditpg(@RequestParam("pgid")int pgid,Model model)//? ->pass the value
@@ -124,6 +135,48 @@ public class ManagePgController {
 	
 	
 	
+	@GetMapping("/pgsideuploadprofile")
+	public String uploadProfile()
+	{
+		return "PgOwnerUploadProfile";
+	}
 	
+	@PostMapping("/savepgprofile")
+	public String savepgProfile(@RequestParam("imgurl") MultipartFile file, HttpSession session)
+	{
+		
+		System.out.println(file.getOriginalFilename());
+		System.out.println(file.getSize());
+		
+		
+		UserBean user=(UserBean)session.getAttribute("user");
+		int userId=user.getUserId();
+
+		String path="C:\\Users\\Rutvi Thakkar\\Documents\\workspace-spring-tool-suite-4-4.13.1.RELEASE\\PG\\src\\main\\resources\\static\\assets\\proimages";
+		byte image[]=new byte[(int)file.getSize()];
+		try {
+			
+			File userFolder=new File(path,userId+"");  //10 20 30
+			userFolder.mkdir(); //create folder if not present else ignore
+			
+			
+			profiledao.updateProfile("assets/proimages/" + userId + "/" + file.getOriginalFilename(), userId);//// images/1/a.jpg
+			
+			image =file.getBytes();
+			File f=new File(userFolder,file.getOriginalFilename());
+			f.createNewFile();
+			FileOutputStream fos=new FileOutputStream(f);
+			fos.write(image);
+			fos.close();
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 	
+		return "PgOwnerUploadProfile";
+	}
 }

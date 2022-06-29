@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,62 +159,31 @@ body{
 
   <h1>OFFERS</h1>
   <div class="offer">
-  
-  
-  
- <a href="pgnewtransaction" style="text-decoration: none;">
-    <div class="offer_name">
-      
-      <h3>Silver Offer</h3>
-      <p class="role">4 Months</p>
-      <p class="role">1000 RS.</p>
-      <ul>
-      <li>Silver Offer is benifited for only 4 months.</li>
-        <li>If You register your PG in this plan so, our website presents your PG details for only 4 months.</li>
-          <li> After 4 months we remove your Pg from our website.</li>
-        </ul>
-    </div>
-    </a>
-    
-    
-    <a href="pgnewtransaction" style="text-decoration: none;">
-    <div class="offer_name">
-      
-      <h3>Golden Offer</h3>
-      <p class="role">8 Months</p>
-      <p class="role">1800 RS.</p>
-      <ul>
-        <li>Golden Offer is benifited for only 8 months.</li>
-          <li>If You register your PG in this plan so, our website presents your PG details for 8 months.</li>
-            <li> After 4 months we remove your Pg from our website.</li>
-          </ul>
-    
-    
-    </div>
-    </a>
-    
-    <a href="pgnewtransaction" style="text-decoration: none;">
-    <div class="offer_name">
-     
-      <h3>Diamond Offer</h3>
-      <p class="role">12 Months</p>
-      <p class="role">2500 RS.</p>
-      <ul>
-        <li>Diamond Offer is benifited for only 12 months.</li>
-          <li>If You register your PG in this plan so, our website presents your PG details for 12 months.</li>
-            <li> After 12 months we remove your Pg from our website.</li>
-          </ul>
-    </div>
-</a>
-
-
-    
-  </div>
+  <div class="grid-container" style="display:inline-grid;grid-template-columns: 33.33% 33.33% 33.34%">
+	  <c:forEach items="${offers}" var="offer">
+	<!--  <a href="pgnewtransaction?offerid=${offer.subid }" style="text-decoration: none;">   -->
+	    <div class="offer_name" style="position:relative;height:350px;display:inline-block;overflow:auto; word-wrap:break-word;">
+	      
+	      <h3>${offer.offername}</h3>
+	      <p class="role">${offer.timeduration } Months</p>
+	      <p class="role">${offer.amount } RS.</p>
+	      <ul>
+	     	<c:forTokens items="${offer.offerdescription }" delims="." var="o">
+	     		<li>${o}</li>
+	     	</c:forTokens> 
+	      </ul>
+	    </div>
+	  </a>
+	 	
+	 </c:forEach> 
+ </div>
+ 
+</div>
 
   <div class="btn">
 
-  <button class="button" style="float: right;" onclick="pgownerdashboardnewpg"><span>Next </span></button>
-	<a href="pgownerdashboardnewpg"  target="_self">Next</a>
+   <button class="button" style="float: right; color: white;"> <a href="pgownerdashboard" style="text-decoration:none"><span>Back </span></a></button>
+<!--	<a href="pgownerdashboardnewpg"  target="_self">Next</a> -->
 </div>
  
 </div>			

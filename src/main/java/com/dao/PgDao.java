@@ -25,11 +25,41 @@ public class PgDao {
 
 	public List<PgBean> getallpg() {
 		List<PgBean> pg = stmt.query(
-				"select * from pg join users using (userid) join subscribedusers using(userid) join subscription on subscription.subid=subscribedusers.subid",
+				"select p.*,u.firstname,u.lastname,s.timeduration,s.amount from pg p,users u,subscription s where p.userId=u.userId and s.subid=p.subid ",
 				new BeanPropertyRowMapper<PgBean>(PgBean.class));
 		return pg;
 	}
 
+	
+	public List<PgBean> getallpg2() {
+		List<PgBean> pg = stmt.query("select * from pg join users using (userid) join subscribedusers using(userid) join subscription on subscription.subid=subscribedusers.subid",
+				new BeanPropertyRowMapper<PgBean>(PgBean.class));
+		
+		return pg;
+	}
+	
+	public List<PgBean> getAllPGUserSide() {
+		List<PgBean> pg = stmt.query("select * from pg",new BeanPropertyRowMapper<PgBean>(PgBean.class));
+		return pg;
+	}
+	
+	
+	
+	/*public List<PgBean> getrevenuebypg() {
+		return stmt.query("select p.*,s.timeduration,s.amount,SUM(s.amount) as revenue from pg p join subscription s using (subid)", new BeanPropertyRowMapper<PgBean>(PgBean.class)); // When we have condition statement in query that time we used Queryfor
+										// objectmethod
+	}*/
+	
+	public int getrevenuebypg() {
+		int totalrevenue= stmt.queryForObject("select SUM(amount) as revenue from pg p join subscription s using (subid)", Integer.class); // When we have condition statement in query that time we used Queryfor
+		return totalrevenue;							
+	}
+	
+	
+	
+	
+	
+	
 	/*public List<PgBean> getAllUserSpecific(int userid) {
 		List<PgBean> pg = stmt.query(
 				"select * from pg where userid="+userid,
@@ -89,6 +119,17 @@ public class PgDao {
 				new Object[] { forwhom }); // When we have condition statement in query that time we used Queryfor
 											// objectmethod
 	}
+	
+	
+	
+	public List<PgBean> getPgByForwhomId2(String forwhom) {
+		return stmt.query("select p.*,s.timeduration,s.amount from pg p join subscription s using (subid) where forwhom = ?", new BeanPropertyRowMapper<PgBean>(PgBean.class),
+				new Object[] { forwhom }); // When we have condition statement in query that time we used Queryfor
+											// objectmethod
+	}
+	
+	
+	
 	public List<PgBean> getPgByisavailableId(boolean isavailable) {
 		return stmt.query("select *  from pg where isavailable = ? ", new BeanPropertyRowMapper<PgBean>(PgBean.class),
 				new Object[] {isavailable}); // When we have condition statement in query that time we used Queryfor

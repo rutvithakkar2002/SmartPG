@@ -78,7 +78,7 @@ a:hover {
     <div class="err">4</div>
     <i class="far fa-question-circle fa-spin"></i>
     <div class="err2">4</div>
-    <div class="msg">Maybe this page moved? Got deleted? Is hiding out in quarantine? Never existed in the first place?<p>Let's go <a href="pgownerdashboard">home</a> and try from there.</p></div>
+    <div class="msg">You can register maximum 3 PG in one subscription..<p> If You want to add 4th pg than process the 2nd transaction process</p><p>Let's go <a href="pgownerdashboard">home</a> and try from there.</p></div>
       </div>
 
 

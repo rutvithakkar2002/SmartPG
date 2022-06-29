@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,17 +77,8 @@
 							name="paymentgatewayused"><br> <br> <input
 							type="submit" value="submit"> <br> <br>
 					</form>
-  
-					
-					
-					
-					
 					
 				
-					
-					
-					
-					
 					
 					
 					
@@ -117,6 +107,9 @@
 	
 </body>
 </html>
+
+
+
 
 
 
@@ -205,32 +198,7 @@ Payment Gateway Used:<input type="text" name="paymentgatewayused"><br><br>
   <!-- 
   
   
-  <form method="post" action="savetransactiondetail">
-
-						User id:<select name="userId">
-							<option>--------Select User----------</option>
-							<c:forEach items="${users}" var="u">
-								<option value="${u.userId}">${u.firstName}:${u.lastName}:${u.email}
-								</option>
-
-							</c:forEach>
-						</select><br> <br> payment Id:<select name="paymentid">
-							<option>--------Select Payment----------</option>
-							<c:forEach items="${payment}" var="p">
-								<option value="${p.paymentid}">${p.paymentid}</option>
-
-							</c:forEach>
-						</select><br> <br> Transaction for:<input type="text"
-							name="transactionfor"><br> <br> Amount Paid:<input
-							type="text" name="amountpaid"><br> <br> Mode Of
-						Payment:<input type="text" name="modeofpayment"><br>
-						<br> Date And Time:<input type="text" name="dateandtime"><br>
-						<br> Payment Gateway Used:<input type="text"
-							name="paymentgatewayused"><br> <br> <input
-							type="submit" value="submit"> <br> <br>
-					</form>
-  
-  
+ 
   
  -->
  
@@ -264,18 +232,33 @@ Payment Gateway Used:<input type="text" name="paymentgatewayused"><br><br>
 							name="paymentgatewayused"><br> <br> <input
 							type="submit" value="submit"> <br> <br>
 					</form>
+  -->
+  
+  <!-- 
+  <form method="post" action="savetransactiondetail">
+
+						User id:<select name="userId">
+							<option>--------Select User----------</option>
+							<c:forEach items="${users}" var="u">
+								<option value="${u.userId}">${u.firstName}:${u.lastName}:${u.email}
+								</option>
+
+							</c:forEach>
+						</select><br> <br> payment Id:<select name="paymentid">
+							<option>--------Select Payment----------</option>
+							<c:forEach items="${payment}" var="p">
+								<option value="${p.paymentid}">${p.paymentid}</option>
+
+							</c:forEach>
+						</select><br> <br> Transaction for:<input type="text"
+							name="transactionfor"><br> <br> Amount Paid:<input
+							type="text" name="amountpaid"><br> <br> Mode Of
+						Payment:<input type="text" name="modeofpayment"><br>
+						<br> Date And Time:<input type="text" name="dateandtime"><br>
+						<br> Payment Gateway Used:<input type="text"
+							name="paymentgatewayused"><br> <br> <input
+							type="submit" value="submit"> <br> <br>
+					</form>
   
 					
-					
-					
-					
-					
-					
-					
- 
- 
- 
- 
- 
- 
-  -->
+   -->

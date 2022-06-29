@@ -100,24 +100,19 @@
 						<select  name="roleId" class="form-select" aria-label="Default select example">
 							<option>Select Your Role</option>
 							<c:forEach items="${roles}" var="r">
+								<c:if test="${user.roleId==4 && r.roleId==4}">
 								<option value="${r.roleId}">${r.roleName}</option>
 								
+								</c:if>
+								<c:if test="${r.roleId!=4 }">
+								<option value="${r.roleId}">${r.roleName}</option>
+								
+								</c:if>
 								
 							</c:forEach>
 
 						</select> <br>
 						<br>
-
-
-
-
-						<div class="form-group">
-							<input type="text" class="form-control form-control-lg"
-								id="exampleInputPassword1" placeholder="Add Your Image"
-								name="imgurl"> ${error}${msg}
-
-						</div>
-
 
 
 						<div class="mt-3">
@@ -126,6 +121,7 @@
 								<i class="mdi mdi-account"></i> SIGN UP
 							</button>
 						</div>
+						<c:if test="${user.roleId!=4 }">
 						<div
 							class="my-2 d-flex justify-content-between align-items-center">
 							<div class="form-check">
@@ -139,7 +135,11 @@
 
 						<div class="text-center mt-4 font-weight-light">
 							Don't have an account? <a href="newuser" class="text-primary">Create</a>
-						</div>
+						</div>						
+						
+						
+						</c:if>
+
 					</form>
 				</div>
 				<!-- content-wrapper ends -->

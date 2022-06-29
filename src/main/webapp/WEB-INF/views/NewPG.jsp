@@ -56,7 +56,7 @@
 					<form action="savepg" method="post">
 								<div class="form-group">
 									PG Name: <input type="text" name="pgname"
-										placeholder="enter your PGname"> <br> <br>
+										placeholder="enter your PGname" > <br> <br>
 									User:<select name="userId">
 										<option>---------Select User----</option>
 										<c:forEach items="${users}" var="u">
@@ -82,7 +82,7 @@
 										type="text" name="state"><br> <br> 
 										Country:<input type="text" name="country"><br> <br>
 									 Is Available:<input type="text" name="isavailable"><br> <br> 
-								<%-- 	 Subscription:									<select name="subid">
+								 	 Subscription:									<select name="subid">
 										<option>----Select Plan----</option>
 										<c:forEach items="${subscriptions}" var="s">
 											<option value="${s.subid}">${s.offername}: ${s.timeduration}:
@@ -91,8 +91,12 @@
 										</c:forEach>
 
 									</select> <br> <br> 
- --%>								<!-- 	Created on:<input type="text" name="createdon"><br> -->
+								<!-- 	Created on:<input type="text" name="createdon"><br> -->
 									
+										Start-date: <input type="text" name="startdate"
+										placeholder=""> <br> <br>
+										End-date: <input type="text" name="enddate"
+										placeholder=""> <br> <br>
 
 
 

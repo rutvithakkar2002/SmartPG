@@ -1,6 +1,8 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 d-flex flex-row fixed-top">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-           <h2 class="navbar-brand brand-logo"> SMART pG fINDER  </h2>
+         <!--   <h2 class="navbar-brand brand-logo"> SMART pG fINDER  </h2> -->
+           <img src="/assets3/img/core-img/logo5.png" alt="" width="60px" height="35px"><b>Royal PGfInDeR</b></a>
+           
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -12,7 +14,7 @@
                 <div class="input-group-prepend bg-transparent">
                   <i class="input-group-text border-0 mdi mdi-magnify"></i>
                 </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Search">
+             <!--    <input type="text" class="form-control bg-transparent border-0" placeholder="Search"> -->
               </div>
             </form>
           </div>
@@ -20,7 +22,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="assets/images/faces/face1.jpg" alt="image">
+                  <img src="${user.imgurl}" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -28,10 +30,10 @@
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+                <a class="dropdown-item" href="uploadprofile">
+                  <i class="mdi mdi-cached me-2 text-success"></i> Change Profile pic </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="login">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
             </li>

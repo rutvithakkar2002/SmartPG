@@ -7,16 +7,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.PgBean;
+import com.bean.SubscriptionBean;
 import com.bean.TransactionBean;
 import com.bean.UserBean;
 import com.dao.PgDao;
+import com.dao.SubscriptionDao;
 import com.dao.TransactionDao;
 import com.dao.UserDao;
 @Controller
 public class OfferController {
 
+	@Autowired
+	SubscriptionDao subscriptionDao;
 	
 	@Autowired
 	UserDao userdao;
@@ -28,19 +33,18 @@ public class OfferController {
 	TransactionDao transactiondao;
 	
 	@GetMapping("OfferPage") //URL Name you enter in browser
-	public String pgownerdashboard()  
+	public String pgownerdashboard(Model model)  
 	{
+		model.addAttribute("offers", subscriptionDao.getAllplans());
 		return "Offerspage";   //JSP call
 	}
 	
 	@GetMapping("/pgnewtransaction")
-	public String pgnewtransaction(Model model)
+	public String pgnewtransaction(Model model,@RequestParam("offerid") int offerID)
 	{
-		
-		List<UserBean>users=userdao.getAllUsers2();
-		model.addAttribute("users", users);
-		List<PgBean>pg=pgdao.getallpg();
-		model.addAttribute("pg", pg);
+		System.out.println("Offerid "+offerID);
+		SubscriptionBean sub = subscriptionDao.getplanById(offerID);
+		model.addAttribute("sub", sub);
 		return "Pgnewtransaction";
 		
 	}

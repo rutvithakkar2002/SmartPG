@@ -51,14 +51,8 @@
 								<div class="form-group">
 									PG Name: <input type="text" name="pgname"
 										placeholder="enter your PGname"> <br> <br>
-									User:<select name="userId">
-										<option>---------Select User----</option>
-										<c:forEach items="${users}" var="u">
-											<option value="${u.userId}">${u.firstName}:${u.lastName}:${u.email}</option>
-
-										</c:forEach>
-
-									</select> <br> <br> <label>PGAddress:</label>
+										<input type="hidden" name="userId" value="${user.userId }">
+							<br> <br> <label>PGAddress:</label>
 
 									<textarea id="textarea" rows="5" cols="30" name="pgaddress"></textarea>
 									<br> <br>
@@ -91,7 +85,7 @@
 
 
 								</div>
-								<button type="submit" class="btn btn-gradient-primary me-2">Add Pg</button>
+								<button type="submit" class="btn btn-gradient-primary me-2">Next</button>
 
 								<!--        <button class="btn btn-light">Cancel</button>-->
 							</form>

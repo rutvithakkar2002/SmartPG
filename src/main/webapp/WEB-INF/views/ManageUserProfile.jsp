@@ -11,7 +11,7 @@
 
 	<div class="container-scroller">
 
-		<div class="row p-0 m-0 proBanner d-flex" >
+		<div class="row p-0 m-0 proBanner d-flex">
 
 			<div class="col-md-12 p-0 m-0">
 				<div
@@ -47,10 +47,10 @@
 						<div class="col-md-3 border-right">
 							<div
 								class="d-flex flex-column align-items-center text-center p-3 py-5">
-								<img class="rounded-circle mt-5"
-									src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQF2psCzfbB611rnUhxgMi-lc2oB78ykqDGYb4v83xQ1pAbhPiB&usqp=CAU"><span
-									class="font-weight-bold">Rutvi</span><span
-									class="text-black-50">rutvi2002@.com</span><span> </span>
+								<img class="rounded-circle mt-10"
+									style="display: block; width: 100%; height: 250px;"
+									src="${user.imgurl}"><span class="font-weight-bold">${user.firstName}</span><span
+									class="text-black-50">${user.email}</span><span> </span>
 							</div>
 						</div>
 						<div class="col-md-5 border-right">
@@ -59,7 +59,7 @@
 									class="d-flex justify-content-between align-items-center mb-3">
 									<h4 class="text-right">Manage Profile</h4>
 								</div>
-												
+
 								<form action="updateuserprofile" method="post">
 									<input type="hidden" value="${user.userId}" name="userId" />
 									<div class="form-group">
@@ -67,15 +67,14 @@
 											<div class="col-md-12">
 												<label class="labels">Name</label><input type="text"
 													name="firstName" class="form-control"
-													placeholder="enter your firstname" value="${user.firstName}">
+													placeholder="enter your firstname"
+													value="${user.firstName}">
 											</div>
-											<br>
-											<br>
-											<br>
+											<br> <br> <br>
 											<div class="col-md-12">
 												<label class="labels">Surname</label><input type="text"
-													name="lastName" class="form-control" value="${user.lastName}"
-													placeholder="enter your surname">
+													name="lastName" class="form-control"
+													value="${user.lastName}" placeholder="enter your surname">
 											</div>
 										</div>
 
@@ -89,8 +88,16 @@
 
 										</div>
 
+
+
+
+
+
+
+
 										<div class="mt-5 text-center">
-											<input type="submit" class="btn btn-primary profile-button" value="Submit Profile"></input>
+											<input type="submit" class="btn btn-primary profile-button"
+												value="Submit Profile"></input>
 
 										</div>
 								</form>

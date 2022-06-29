@@ -50,7 +50,7 @@
 					<h3 class="page-title">
 						<span class="page-title-icon bg-gradient-primary text-white me-2">
 							<i class="mdi mdi-home"></i>
-						</span> User Report
+						</span> Categotywise PG Report
 					</h3>
 
 				</div>
@@ -79,9 +79,9 @@
 											<tr pg="row">
 												<th>PG ID</th>
 											<!-- 	<th>User ID</th> -->
-												<th>FirstName</th>
+											<!-- 	<th>FirstName</th>
 												<th>LastName</th>
-												<th>Email</th>
+												<th>Email</th> -->
 												<th>PG Name</th>
 												<th>PG Address</th>
 												<th>PG Lattitude</th>
@@ -98,7 +98,7 @@
 												<th>Amount</th>
 												
 												<th>created on</th>
-												<th>Action</th>
+												
 
 
 											</tr>
@@ -110,9 +110,9 @@
 													<td>${p.pgid}</td>
 												<!-- 	<td>${p.userId}</td> -->
 
-													<td>${p.firstName}</td>
+												<!-- 	<td>${p.firstName}</td>
 													<td>${p.lastName}</td>
-													<td>${p.email}</td>
+													<td>${p.email}</td> -->
 													<td>${p.pgname}</td>
 													<td>${p.pgaddress}</td>
 													<td>${p.pglattitude}</td>
@@ -130,8 +130,8 @@
 													<td>${p.amount}</td>
 													
 													<td>${p.createdon}</td>
-													<td><a href="deletepg/${p.pgid}">Delete</a>| <!-- when we submit then the roleid passed in url -->
-														<a href="editpg?pgid=${p.pgid}">Edit</a></td>
+												<!-- 	<td><a href="deletepg/${p.pgid}">Delete</a>| 
+														<a href="editpg?pgid=${p.pgid}">Edit</a></td>   -->
 
 												</tr>
 

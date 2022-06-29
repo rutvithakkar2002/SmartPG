@@ -17,7 +17,7 @@ public class SubscriptionDao {
 	//query-->select-->read only
 	public void insertplan(SubscriptionBean subscription) 
 	{
-		stmt.update("insert into subscription (offername,timeduration,amount) values(?,?,?)",subscription.getOffername(),subscription.getTimeduration(),subscription.getAmount());  //? is a placeholder which is compiled only one time and replace the value of rolename every time.
+		stmt.update("insert into subscription (offername,timeduration,amount,offerdescription) values(?,?,?,?)",subscription.getOffername(),subscription.getTimeduration(),subscription.getAmount(),subscription.getOfferdescription());  //? is a placeholder which is compiled only one time and replace the value of rolename every time.
 		//stmt.update("insert into subscription (amount) values(?)",(s.getAmount()));
 	}
 	
@@ -41,7 +41,7 @@ public class SubscriptionDao {
 	
 	public void updateplan(SubscriptionBean sub)
 	{
-		stmt.update("update subscription set offername=?,timeduration=?, amount=? where subid=?",sub.getOffername(),sub.getTimeduration(),sub.getAmount(),sub.getSubid());
+		stmt.update("update subscription set offername=?,timeduration=?, amount=?,offerdescription=? where subid=?",sub.getOffername(),sub.getTimeduration(),sub.getAmount(),sub.getOfferdescription(),sub.getSubid());
 	}
 	
 	

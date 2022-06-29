@@ -56,29 +56,20 @@
 
 
 								<form method="POST" action="pgsavetransaction">
-									UserName:<select name="userId">
-										<option>--------Select User----------</option>
-										<c:forEach items="${users}" var="u">
-											<option value="${u.userId}">${u.firstName}:${u.lastName}:${u.email}
-											</option>
-
-										</c:forEach>
-									</select> <br>
-									<br> Rate:<input type="text" name="rate"><br>
+									<br>Rate:<input type="text" name="rate" value="${sub.amount }" readonly><br>
 									<br> 
-									
-									 User:<input type="text" name={user.firstname}>	<br>
-									 
+									<input type="hidden" name="subid" value="${sub.subid }">
+									Offername: <input type="text" value="${sub.offername }" readonly>
+									 <br>
 									<br>
-									 Pgid:<select name="pgid">
-										<option>--------Select PG----------</option>
-										<c:forEach items="${pg}" var="p">
-											<option value="${p.pgid}">${p.pgaddress}:${p.pglongitude}:${p.city}
-											</option>
-
-										</c:forEach>
-									</select> <br> 
-									<br> <input type="submit" value="submit">
+									
+									Start-date: <input type="text" name="startdate"
+										placeholder=""> <br> <br>
+										End-date: <input type="text" name="enddate"
+										placeholder=""> <br> <br>
+									
+								
+								<br> <input type="submit" value="submit">
 								</form>
 
 

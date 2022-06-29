@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bean.PgBean;
 //import com.bean.ForgetPasswordBean;
 //import com.bean.LoginBean;
 import com.bean.UserBean;
+import com.dao.PgDao;
 import com.dao.UserDao;
 import com.service.EmailService;
 
@@ -25,6 +27,9 @@ public class SessionController {
 
 	@Autowired
 	EmailService emailService;
+	
+	@Autowired
+	PgDao pgdao;
 	
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
@@ -47,11 +52,18 @@ public class SessionController {
 		return "Login";// Login.jsp
 	}
 
+
+	//PgBean pgowner=(PgBean)pgdao.getallpg();
+	//session.setAttribute("pg", pgowner);
+	
+	
 	@PostMapping("/login")
 	public String authenticate(UserBean user,Model model,HttpSession session) {
 
 		boolean isCorrect = false;
 		UserBean dbUser = userDao.getUserByEmail(user.getEmail());
+	
+		
 		if (dbUser != null) {
 
 			if (bcryptPasswordEncoder.matches(user.getPassword(), dbUser.getPassword()) == true) {

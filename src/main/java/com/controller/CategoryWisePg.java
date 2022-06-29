@@ -41,7 +41,7 @@ public class CategoryWisePg {
 			}else if(forwhom == 3 ) {
 				fw = "For Boys and Girls Both";
 			}
-			model.addAttribute("pg",pgdao.getPgByForwhomId(fw));
+			model.addAttribute("pg",pgdao.getPgByForwhomId2(fw));
 			
 			
 		}

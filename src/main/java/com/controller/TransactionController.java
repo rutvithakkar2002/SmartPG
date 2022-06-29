@@ -29,7 +29,7 @@ public class TransactionController {
 	@GetMapping("/newtransaction")
 	public String newtransaction(Model model)
 	{
-		List<UserBean>users=userdao.getAllUsers2();
+		List<UserBean>users=userdao.getAllUsers3();
 		model.addAttribute("users", users);
 		List<PgBean>pg=pgdao.getallpg();
 		model.addAttribute("pg", pg);

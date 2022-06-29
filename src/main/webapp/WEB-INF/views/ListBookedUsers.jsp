@@ -60,7 +60,7 @@
 							<div class="card">
 								<div class="card-body">
 
-									<a href="newbookedcustomer">Add new booked user</a>
+									<!-- <a href="newbookedcustomer">Add new booked user</a> -->
 									<!-- 	<h4 class="card-title"></h4> -->
 
 

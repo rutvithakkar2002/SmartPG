@@ -128,7 +128,9 @@
 													
 													<td>${p.createdon}</td>
 													<td><a href="deletepg/${p.pgid}">Delete</a>| <!-- when we submit then the roleid passed in url -->
-														<a href="PGownereditpg?pgid=${p.pgid}">Edit</a></td>
+														<a href="PGownereditpg?pgid=${p.pgid}">Edit</a>|
+														<a href="pgownerpgimages?pgid=${p.pgid}">Manage Photos</a></td></td>
+														
 
 												</tr>
 

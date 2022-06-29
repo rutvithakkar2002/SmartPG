@@ -28,6 +28,27 @@ public class PgRateDao {
 		
 		return pg;
 	}
+	
+	
+	public List<PgRateBean> getallpgrate2()
+	{
+		//List<PgRateBean> rate =  stmt.query("select p.*,r.*,ph.* from pg p,pgrate r,photos ph where p.pgid=r.pgid and p.pgid=ph.pgid and r.pgid=ph.pgid",new BeanPropertyRowMapper<PgRateBean>(PgRateBean.class));
+		
+		List<PgRateBean> rate =  stmt.query("select p.*,r.*,pmi.* from pg p,pgrate r,pgmainimage pmi where p.pgid=r.pgid and p.pgid=pmi.pgid and r.pgid=pmi.pgid",new BeanPropertyRowMapper<PgRateBean>(PgRateBean.class));
+		
+		//List<PgRateBean> pg =  stmt.query("select pr.*,p.pgname,p.pgaddress,p.city,p.state from pgrate pr,pg p where p.pgid=pr.pgid",new BeanPropertyRowMapper<PgRateBean>(PgRateBean.class));
+		
+		return rate;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void deletepgrate(int pgrateid)
 	{
 		stmt.update("delete from pgrate where pgrateid=?",pgrateid); //It will place the roleid

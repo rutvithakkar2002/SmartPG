@@ -16,11 +16,14 @@ public class PgBean {
 	private String state;
 	private String country;
 	private boolean isavailable;
-	
+	private String imgurl;
 	private int subid;
 	private String offername;
 	private String timeduration;
 	private int amount;
+	private int subscribeid;
+	private String startdateofsub;
+	private String enddateofsub;
 	
 	
 	private String createdon;
@@ -126,6 +129,12 @@ public class PgBean {
 	
 	
 	
+	public String getImgurl() {
+		return imgurl;
+	}
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
 	public String getOffername() {
 		return offername;
 	}
@@ -156,4 +165,23 @@ public class PgBean {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	public int getSubscribeid() {
+		return subscribeid;
+	}
+	public void setSubscribeid(int subscribeid) {
+		this.subscribeid = subscribeid;
+	}
+	public String getStartdateofsub() {
+		return startdateofsub;
+	}
+	public void setStartdateofsub(String startdateofsub) {
+		this.startdateofsub = startdateofsub;
+	}
+	public String getEnddateofsub() {
+		return enddateofsub;
+	}
+	public void setEnddateofsub(String enddateofsub) {
+		this.enddateofsub = enddateofsub;
+	}
+
 }

@@ -93,10 +93,10 @@
 									<img src="assets/images/dashboard/circle.svg"
 										class="card-img-absolute" alt="circle-image">
 									<h4 class="font-weight-normal mb-3">
-										TOtal Revenue<i
+										Total Revenue<i
 											class="mdi mdi-diamond mdi-24px float-right"></i>
 									</h4>
-									<h2 class="mb-5">95,5741</h2>
+									<h2 class="mb-5">${totalrevenue}</h2>
 									
 								</div>
 							</div>

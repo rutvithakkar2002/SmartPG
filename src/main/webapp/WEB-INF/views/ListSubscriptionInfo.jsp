@@ -75,6 +75,9 @@
 												
 												<th>Time Duration</th>
 												<th>Amount</th>
+												
+												<th>Offer Description</th>
+												
 												<th>Action</th>
 											</thead>
 											<tbody>
@@ -85,6 +88,9 @@
 														<td>${plan.offername}</td>
 														<td>${plan.timeduration }</td>
 														<td>${plan.amount}</td>
+														<td>${plan.offerdescription}</td>
+														
+														
 														<td><a href="deletesub/${plan.subid}">Delete</a>| <!-- when we submit then the roleid passed in url -->
 															<a href="editsub?subid=${plan.subid}">Edit</a></td>
 

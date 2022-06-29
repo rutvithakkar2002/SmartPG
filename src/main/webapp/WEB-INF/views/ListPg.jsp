@@ -241,7 +241,7 @@
 										<thead>
 											<tr pg="row">
 												<th>PG ID</th>
-											<!-- 	<th>User ID</th> -->
+											 	<th>User ID</th> 
 												<th>FirstName</th>
 												<th>LastName</th>
 												<th>Email</th>
@@ -255,10 +255,14 @@
 												<th>state</th>
 												<th>country</th>
 												<th>isavailable</th>
-												<!-- <th>subscription ID</th>-->
+												<th>subscription ID</th>
 												
 												<th>Time Duration</th>
 												<th>Amount</th>
+												
+									<!-- 			<th>subscriptionid</th>
+											<th>startdate</th>
+												<th>enddate</th> -->
 												
 												<th>created on</th>
 												<th>Action</th>
@@ -271,7 +275,7 @@
 												<!-- Dynamic value foreach -->
 												<tr>
 													<td>${p.pgid}</td>
-												<!-- 	<td>${p.userId}</td> -->
+													<td>${p.userId}</td> 
 
 													<td>${p.firstName}</td>
 													<td>${p.lastName}</td>
@@ -287,10 +291,16 @@
 													<td>${p.country}</td>
 													<td>${p.isavailable}</td>
 													
-													<!-- <td>${p.subid}</td> -->
+													
+													
+													<td>${p.subid}</td> 
 													
 													<td>${p.timeduration}</td>
 													<td>${p.amount}</td>
+													
+												<!-- <td>${p.subscribeid}</td>
+													<td>${p.startdateofsub}</td>
+													<td>${p.enddateofsub}</td>   --> 
 													
 													<td>${p.createdon}</td>
 													<td><a href="deletepg/${p.pgid}">Delete</a>| <!-- when we submit then the roleid passed in url -->
